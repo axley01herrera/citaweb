@@ -78,19 +78,8 @@ defined('EXIT_DATABASE')       || define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-
-/* PRODUCTION ENVIRONMENT 
 define("ENVIRONMENT","production");
-define("EMAIL_PROTOCOL","smtp");
-define("EMAIL_SMTP_HOST","ssl://smtp.hostinger.com");
-define("EMAIL_SMTP_USER","info@alcaponebarbershop.com");
-define("EMAIL_SMTP_PASSWORD","@David1991");
-define("EMAIL_SMTP_PORT","465");
-define("EMAIL_SMTP_CRYPTO","TLS");
-define("EMAIL_MAIL_TYPE","html");*/
-
-/* DEV ENVIRONMENT */
-define("ENVIRONMENT","development");
+// define("ENVIRONMENT","development");
 define("EMAIL_PROTOCOL","smtp");
 define("EMAIL_SMTP_HOST","ssl://smtp.hostinger.com");
 define("EMAIL_SMTP_USER","dev@axleyherrera.com");
