@@ -45,7 +45,7 @@ class Admin extends BaseController
         $data['profession'] = htmlspecialchars(trim($this->request->getPost('profession')));
         $data['phone'] = htmlspecialchars(trim($this->request->getPost('phone')));
         $data['email'] = htmlspecialchars(trim($this->request->getPost('email')));
-        $result = $this->objMainModel->objUpdate('barber_config', $data, 1);
+        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 
         return json_encode($result);
     }
@@ -65,7 +65,7 @@ class Admin extends BaseController
         $data['facebookLink'] = htmlspecialchars(trim($this->request->getPost('facebook')));
         $data['instagramLink'] = htmlspecialchars(trim($this->request->getPost('instagram')));
 
-        $result = $this->objMainModel->objUpdate('barber_config', $data, 1);
+        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 
         return json_encode($result);
     }
@@ -88,7 +88,7 @@ class Admin extends BaseController
         $data['bussinessPostalCode'] = htmlspecialchars(trim($this->request->getPost('bussinessPostalCode')));
         $data['bussinessCountry'] = htmlspecialchars(trim($this->request->getPost('bussinessCountry')));
 
-        $result = $this->objMainModel->objUpdate('barber_config', $data, 1);
+        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 
         return json_encode($result);
     }
@@ -109,7 +109,7 @@ class Admin extends BaseController
         $data = array();
         $data[$field] = $value;
 
-        $result = $this->objMainModel->objUpdate('barber_config', $data, 1);
+        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 
         return json_encode($result);
     }
@@ -148,7 +148,7 @@ class Admin extends BaseController
         $data[$field3] = $value3;
         $data[$field4] = $value4;
 
-        $result = $this->objMainModel->objUpdate('barber_config', $data, 1);
+        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 
         return json_encode($result);
     }
@@ -173,7 +173,7 @@ class Admin extends BaseController
         $data = array();
         $data['password'] = htmlspecialchars(trim(password_hash($this->request->getPost('pass'), PASSWORD_DEFAULT)));
 
-        $result = $this->objMainModel->objUpdate('barber_config', $data, 1);
+        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 
         return json_encode($result);
     }
@@ -181,7 +181,7 @@ class Admin extends BaseController
     public function getServices()
     {
         $data = array();
-        $data['services'] = $this->objMainModel->objData('barber_service');
+        $data['services'] = $this->objMainModel->objData('t_service');
 
         return view('admin/mainServices', $data);
     }
@@ -200,7 +200,7 @@ class Admin extends BaseController
         else {
             $data['modalTitle'] = 'Actualizando Servicio';
             $data['id'] = $this->request->getPost('id');
-            $data['service'] = $this->objMainModel->objData('barber_service', 'id', $data['id'])[0];
+            $data['service'] = $this->objMainModel->objData('t_service', 'id', $data['id'])[0];
         }
 
         return view('admin/createService', $data);
@@ -221,16 +221,16 @@ class Admin extends BaseController
         $data['description'] = htmlspecialchars(trim($this->request->getPost('description')));
 
         if ($this->request->getPost('action') == 'create')
-            $result = $this->objMainModel->objCreate('barber_service', $data);
+            $result = $this->objMainModel->objCreate('t_service', $data);
         else
-            $result = $this->objMainModel->objUpdate('barber_service', $data, $this->request->getPost('id'));
+            $result = $this->objMainModel->objUpdate('t_service', $data, $this->request->getPost('id'));
 
         return json_encode($result);
     }
 
     public function uploadPhoto()
     {
-        return json_encode($this->objMainModel->uploadFile('barber_config', 1, 'avatar', $_FILES['file']));
+        return json_encode($this->objMainModel->uploadFile('t_config', 1, 'avatar', $_FILES['file']));
     }
 
     public function deleteService()
@@ -242,7 +242,7 @@ class Admin extends BaseController
             return json_encode($result);
         }
 
-        return json_encode($this->objMainModel->objDelete('barber_service', $this->request->getPost('id')));
+        return json_encode($this->objMainModel->objDelete('t_service', $this->request->getPost('id')));
     }
 
     public function calendar()
@@ -250,7 +250,7 @@ class Admin extends BaseController
         if (empty($this->objSession->get('user')))
             return view('errorPage/sessionExpired');
 
-        $config = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $hiddenDays = array();
 
         if (empty($config->monday))
@@ -290,14 +290,14 @@ class Admin extends BaseController
             return view('errorPage/sessionExpired');
 
         $data = array();
-        $data['customers'] = $this->objMainModel->objData('barber_customer');
+        $data['customers'] = $this->objMainModel->objData('t_customer');
 
         return view('admin/dtCustomers', $data);
     }
 
     public function updateCustomerStatus()
     {
-        return json_encode($this->objMainModel->objUpdate('barber_customer', ['status' => $this->request->getPost('status')], $this->request->getPost('id')));
+        return json_encode($this->objMainModel->objUpdate('t_customer', ['status' => $this->request->getPost('status')], $this->request->getPost('id')));
     }
 
     public function getTabContent()
@@ -310,12 +310,12 @@ class Admin extends BaseController
         switch ($tab) {
             case 'profile':
                 $data = array();
-                $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+                $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
                 return view('admin/tabProfile', $data);
                 break;
             case 'schedule':
                 $data = array();
-                $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+                $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
                 return view('admin/tabSchedule', $data);
                 break;
             case 'services':

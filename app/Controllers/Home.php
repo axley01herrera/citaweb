@@ -32,10 +32,10 @@ class Home extends BaseController
     {
         $data = array();
         # data
-        $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $data['confirmation'] = $this->request->getPostGet('confirmation');
         $data['sessionExpired'] = $this->request->getPostGet('sessionExpired');
-        $data['services'] = $this->objMainModel->objData('barber_service');
+        $data['services'] = $this->objMainModel->objData('t_service');
         # page
         $data['title'] = 'Inicio';
         $data['page'] = 'home/mainHome';
@@ -46,7 +46,7 @@ class Home extends BaseController
     public function signup()
     {
         $data = array();
-        $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $data['title'] = 'Registro';
         $data['page'] = 'signup/mainSignup';
 
@@ -56,7 +56,7 @@ class Home extends BaseController
     public function signupProcess()
     {
         $email = htmlspecialchars(trim($this->request->getPost('email')));
-        $checkDuplicate = $this->objMainModel->objcheckDuplicate('barber_customer', 'email', $email, '');
+        $checkDuplicate = $this->objMainModel->objcheckDuplicate('t_customer', 'email', $email, '');
 
         if (empty($checkDuplicate)) {
             $data = array();
@@ -66,10 +66,10 @@ class Home extends BaseController
             $data['term'] = $this->request->getPost('term');
             $data['token'] = md5(uniqid());
 
-            $this->objMainModel->objCreate('barber_customer', $data);
+            $this->objMainModel->objCreate('t_customer', $data);
 
             $emailData = array();
-            $emailData['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+            $emailData['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
             $emailData['url'] = base_url('Home/confirmSignup') . '/' . $data['token'];
 
             $this->objEmail->setFrom(EMAIL_SMTP_USER, $emailData['config']->companyName);
@@ -102,13 +102,13 @@ class Home extends BaseController
         if (empty($token))
             return view('errorPage/emptyToken');
 
-        $result = $this->objMainModel->objData('barber_customer', 'token', $token);
+        $result = $this->objMainModel->objData('t_customer', 'token', $token);
 
         if (!empty($result)) {
             $data = array();
             $data['emailVerified'] = 1;
             $data['token'] = '';
-            $this->objMainModel->objUpdate('barber_customer', $data, $result[0]->id);
+            $this->objMainModel->objUpdate('t_customer', $data, $result[0]->id);
             return redirect()->to(base_url('Home/index?confirmation=true'));
         } else
             return view('errorPage/tokenExpired');
@@ -122,7 +122,7 @@ class Home extends BaseController
     public function login()
     {
         $data = array();
-        $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $data['title'] = 'Inicio de Sesión';
         $data['page'] = 'login/mainLogin';
 
@@ -146,7 +146,7 @@ class Home extends BaseController
     public function forgotPassword()
     {
         $data = array();
-        $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $data['title'] = 'Recuperar Contraseña';
         $data['page'] = 'forgotPassword/mainForgotPassword';
 
@@ -156,17 +156,17 @@ class Home extends BaseController
     public function sendRecoverPasswordEmail()
     {
         $email = htmlspecialchars(trim($this->request->getPost('email')));
-        $checkEmail = $this->objMainModel->objData('barber_customer', 'email', $email);
+        $checkEmail = $this->objMainModel->objData('t_customer', 'email', $email);
 
         if (!empty($checkEmail)) {
 
             $data = array();
             $data['token'] = md5(uniqid());
 
-            $this->objMainModel->objUpdate('barber_customer', $data, $checkEmail[0]->id);
+            $this->objMainModel->objUpdate('t_customer', $data, $checkEmail[0]->id);
 
             $emailData = array();
-            $emailData['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+            $emailData['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
             $emailData['url'] = base_url('Home/newPassword') . '/' . $data['token'];
 
             $this->objEmail->setFrom(EMAIL_SMTP_USER, $emailData['config']->companyName);
@@ -199,16 +199,16 @@ class Home extends BaseController
         if (empty($token))
             return view('errorPage/emptyToken');
 
-        $result = $this->objMainModel->objData('barber_customer', 'token', $token);
+        $result = $this->objMainModel->objData('t_customer', 'token', $token);
 
         if (!empty($result)) {
             $data = array();
             $data['token'] = '';
 
-            $this->objMainModel->objUpdate('barber_customer', $data, $result[0]->id);
+            $this->objMainModel->objUpdate('t_customer', $data, $result[0]->id);
 
             $data = array();
-            $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+            $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
             $data['customer'] = $result[0];
             $data['title'] = 'Nueva Contraseña';
             $data['page'] = 'forgotPassword/mainNewPassword';
@@ -223,7 +223,7 @@ class Home extends BaseController
         $data = array();
         $data['password'] = htmlspecialchars(trim(password_hash($this->request->getPost('pass'), PASSWORD_DEFAULT)));
 
-        $this->objMainModel->objUpdate('barber_customer', $data, $this->request->getPost('customer_id'));
+        $this->objMainModel->objUpdate('t_customer', $data, $this->request->getPost('customer_id'));
 
         $result = array();
         $result['error'] = 0;
@@ -235,7 +235,7 @@ class Home extends BaseController
     public function loginAdmin()
     {
         $data = array();
-        $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $data['sessionExpired'] = $this->request->getPostGet('sessionExpired');
         $data['title'] = 'Administración';
         $data['page'] = 'admin/login';

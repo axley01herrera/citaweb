@@ -115,7 +115,7 @@ class MainModel extends Model
 
     public function objVerifyCredentials($email, $password)
     {
-        $query = $this->db->table('barber_customer')
+        $query = $this->db->table('t_customer')
             ->where('email', $email);
 
         $data = $query->get()->getResult();
@@ -147,7 +147,7 @@ class MainModel extends Model
 
     public function objLoginAdmin($password)
     {
-        $query = $this->db->table('barber_config')
+        $query = $this->db->table('t_config')
             ->select('password')
             ->where('id', 1);
 
@@ -172,9 +172,9 @@ class MainModel extends Model
         $start = date('Y-m-d', strtotime($date . "-90 days"));
         $end = date('Y-m-d', strtotime($date . "+90 days"));
 
-        $query = $this->db->table('barber_appointment')
-            ->select('name as title, barber_appointment.id as id, customerID, date, time, service, description')
-            ->join('barber_customer', 'barber_customer.id = barber_appointment.customerID')
+        $query = $this->db->table('t_appointment')
+            ->select('name as title, t_appointment.id as id, customerID, date, time, service, description')
+            ->join('t_customer', 't_customer.id = t_appointment.customerID')
             ->where('date >=', $start)
             ->where('date <=', $end);
 
@@ -207,9 +207,9 @@ class MainModel extends Model
     public function getMainCustomerAppointments($customerID)
     {
         
-        $query = $this->db->table('barber_appointment')
-            ->select('name as title, barber_appointment.id as id, customerID, date, time, service, description')
-            ->join('barber_customer', 'barber_customer.id = barber_appointment.customerID')
+        $query = $this->db->table('t_appointment')
+            ->select('name as title, t_appointment.id as id, customerID, date, time, service, description')
+            ->join('t_customer', 't_customer.id = t_appointment.customerID')
             ->where('date >=', date('Y-m-d'))
             ->where('customerID', $customerID);
 
@@ -218,7 +218,7 @@ class MainModel extends Model
 
     public function checkAppointment($date, $time)
     {
-        $query = $this->db->table('barber_appointment')
+        $query = $this->db->table('t_appointment')
             ->where('date', $date)
             ->where('time', $time);
 
@@ -227,7 +227,7 @@ class MainModel extends Model
 
     public function getActiveCustomers()
     {
-        $query = $this->db->table('barber_customer')
+        $query = $this->db->table('t_customer')
         ->where('status', 1);
 
         return $query->get()->getResult();

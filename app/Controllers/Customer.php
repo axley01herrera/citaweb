@@ -33,7 +33,7 @@ class Customer extends BaseController
             return view('errorPage/sessionExpired');
         
         $data = array();
-        $data['customer'] = $this->objMainModel->objData('barber_customer', 'id', $this->objSession->get('user')->id)[0];
+        $data['customer'] = $this->objMainModel->objData('t_customer', 'id', $this->objSession->get('user')->id)[0];
         $data['initialDate'] = date('Y-m-d');
         $data['title'] = 'Inicio';
         $data['page'] = 'customer/mainCustomer';
@@ -46,7 +46,7 @@ class Customer extends BaseController
         if (empty($this->objSession->get('user'))) 
             return view('errorPage/sessionExpired');
         
-        $config = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $hiddenDays = array();
 
         if (empty($config->monday))
@@ -94,7 +94,7 @@ class Customer extends BaseController
         $data = array();
         $data['dateSelected'] = $this->request->getPost('date');
         $data['dateFormat'] = $this->dateFormat($this->request->getPost('date'));
-        $data['services'] = $this->objMainModel->objData('barber_service');
+        $data['services'] = $this->objMainModel->objData('t_service');
         $data['admin'] = $admin;
 
         if (!empty($data['admin']))
@@ -112,8 +112,8 @@ class Customer extends BaseController
 
         $data = array();
         $data['date'] = $date;
-        $data['appointments'] = $this->objMainModel->objData('barber_appointment', 'date', $date);
-        $data['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $data['appointments'] = $this->objMainModel->objData('t_appointment', 'date', $date);
+        $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
 
         return view('customer/mainFreeAppointments', $data);
     }
@@ -148,11 +148,11 @@ class Customer extends BaseController
             $data['service'] = '';
 
             if (!empty($this->request->getPost('service')))
-                $data['service'] = $this->objMainModel->objData('barber_service', 'id', $this->request->getPost('service'))[0]->title;
+                $data['service'] = $this->objMainModel->objData('t_service', 'id', $this->request->getPost('service'))[0]->title;
 
-            $result = $this->objMainModel->objCreate('barber_appointment', $data);
-            $config = $this->objMainModel->objData('barber_config', 'id', 1)[0];
-            $customer = $this->objMainModel->objData('barber_customer', 'id', $customerID)[0];
+            $result = $this->objMainModel->objCreate('t_appointment', $data);
+            $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
+            $customer = $this->objMainModel->objData('t_customer', 'id', $customerID)[0];
 
             $setTo = array();
             $setTo[] = $config->email;
@@ -182,7 +182,7 @@ class Customer extends BaseController
         if (empty($this->objSession->get('user'))) 
             return view('errorPage/sessionExpired');
 
-        $appointment = $this->objMainModel->objData('barber_appointment', 'id', $this->request->getPost('id'))[0];
+        $appointment = $this->objMainModel->objData('t_appointment', 'id', $this->request->getPost('id'))[0];
 
         if (strtotime(date('Y-m-d H:i:s')) < strtotime($appointment->date . ' ' . $appointment->time)) {
             $data = array();
@@ -206,9 +206,9 @@ class Customer extends BaseController
             return json_encode($result);
         }
 
-        $appointment = $this->objMainModel->objData('barber_appointment', 'id', $this->request->getPost('id'))[0];
-        $config = $this->objMainModel->objData('barber_config', 'id', 1)[0];
-        $customer = $this->objMainModel->objData('barber_customer', 'id', $appointment->customerID)[0];
+        $appointment = $this->objMainModel->objData('t_appointment', 'id', $this->request->getPost('id'))[0];
+        $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
+        $customer = $this->objMainModel->objData('t_customer', 'id', $appointment->customerID)[0];
 
         $setTo = array();
         $setTo[] = $config->email;
@@ -230,7 +230,7 @@ class Customer extends BaseController
         $this->objEmail->setMessage(view('email/cancelAppointment', $emailData));
         $this->objEmail->send();
 
-        $result = $this->objMainModel->objDelete('barber_appointment', $this->request->getPost('id'));
+        $result = $this->objMainModel->objDelete('t_appointment', $this->request->getPost('id'));
 
         return json_encode($result);
     }
@@ -258,7 +258,7 @@ class Customer extends BaseController
         $data = array();
         $data['password'] = htmlspecialchars(trim(password_hash($this->request->getPost('pass'), PASSWORD_DEFAULT)));
 
-        $result = $this->objMainModel->objUpdate('barber_customer', $data, $customerID);
+        $result = $this->objMainModel->objUpdate('t_customer', $data, $customerID);
 
         return json_encode($result);
     }
@@ -321,7 +321,7 @@ class Customer extends BaseController
             return view('errorPage/sessionExpired');
 
         $data = array();
-        $data['customer'] = $this->objMainModel->objData('barber_customer', 'id', $this->request->getPost('customerID'))[0];
+        $data['customer'] = $this->objMainModel->objData('t_customer', 'id', $this->request->getPost('customerID'))[0];
         $data['admin'] = $this->request->getPost('admin');
 
         return view('modals/editProfile', $data);
@@ -343,10 +343,10 @@ class Customer extends BaseController
         $data['email'] = htmlspecialchars(trim($this->request->getPost('email')));
         $data['phone'] = htmlspecialchars(trim($this->request->getPost('phone')));
 
-        $checkDuplicate = $this->objMainModel->objcheckDuplicate('barber_customer', 'email', $data['email'], $this->request->getPost('customerID'));
+        $checkDuplicate = $this->objMainModel->objcheckDuplicate('t_customer', 'email', $data['email'], $this->request->getPost('customerID'));
 
         if (empty($checkDuplicate))
-            $result = $this->objMainModel->objUpdate('barber_customer', $data, $this->request->getPost('customerID'));
+            $result = $this->objMainModel->objUpdate('t_customer', $data, $this->request->getPost('customerID'));
         else {
             $result = array();
             $result['error'] = 3;
@@ -368,11 +368,11 @@ class Customer extends BaseController
         $data = array();
         $data['token'] = md5(uniqid());
 
-        $this->objMainModel->objUpdate('barber_customer', $data, $this->request->getPost('customerID'));
+        $this->objMainModel->objUpdate('t_customer', $data, $this->request->getPost('customerID'));
 
         $emailData = array();
-        $customer = $this->objMainModel->objData('barber_customer', 'id', $this->request->getPost('customerID'))[0];
-        $emailData['config'] = $this->objMainModel->objData('barber_config', 'id', 1)[0];
+        $customer = $this->objMainModel->objData('t_customer', 'id', $this->request->getPost('customerID'))[0];
+        $emailData['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $emailData['url'] = base_url('Home/confirmSignup') . '/' . $data['token'];
 
         $this->objEmail->setFrom(EMAIL_SMTP_USER, $emailData['config']->companyName);
@@ -405,6 +405,6 @@ class Customer extends BaseController
         $data = array();
         $data['emailSubscription'] = $this->request->getPost('emailSubscription');
 
-        return json_encode($this->objMainModel->objUpdate('barber_customer', $data, $this->request->getPost('customerID')));
+        return json_encode($this->objMainModel->objUpdate('t_customer', $data, $this->request->getPost('customerID')));
     }
 }

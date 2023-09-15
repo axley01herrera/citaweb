@@ -24,8 +24,8 @@ class App extends BaseConfig
      * @var string
      */
 
-    public $baseURL = 'http://barber/';
-    //public $baseURL = 'https://alcaponebarbershop.com/';
+    // public $baseURL = 'http://citaweb'; // Local
+    public $baseURL = 'https://negociocitas.online/'; // PRODUCTION
 
     /**
      * --------------------------------------------------------------------------

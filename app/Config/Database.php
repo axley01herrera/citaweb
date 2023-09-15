@@ -30,13 +30,13 @@ class Database extends \CodeIgniter\Database\Config
 	 * @var array
 	 */
 
-	
+	/* LOCAL
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '123',
-		'database' => 'barber',
+		'database' => 'cita_web',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
@@ -51,15 +51,15 @@ class Database extends \CodeIgniter\Database\Config
 		'strictOn' => false,
 		'failover' => [],
 		'port'     => 3306,
-	];
-	
-	/*
+	]; */
+
+	/* PRODUCTION */
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => 'u362324043_admin',
-		'password' => '@David1991',
-		'database' => 'u362324043_appointment',
+		'username' => 'u893179125_appointment',
+		'password' => '@91120128820An',
+		'database' => 'u893179125_appointment',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
@@ -74,8 +74,8 @@ class Database extends \CodeIgniter\Database\Config
 		'strictOn' => false,
 		'failover' => [],
 		'port'     => 3306,
-	];*/
-
+	]; 
+	
 	/**
 	 * This database connection is used when
 	 * running PHPUnit database tests.
