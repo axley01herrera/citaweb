@@ -10,19 +10,19 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12 col-lg-6 mt-5">
-                        <label for="txt-name">Nombre <span class="small text-danger">(Obligatorio)</span></label>
+                        <label for="txt-name">Nombre</label>
                         <input type="text" id="txt-name" class="form-control modal-required" value="<?php echo $customer->name; ?>">
                     </div>
                     <div class="col-12 col-lg-6 mt-5">
-                        <label for="txt-lastName">Apellidos <span class="small text-danger">(Opcional)</span></label>
-                        <input type="text" id="txt-lastName" class="form-control" value="<?php echo $customer->lastName; ?>">
+                        <label for="txt-lastName">Apellidos</label>
+                        <input type="text" id="txt-lastName" class="form-control modal-required" value="<?php echo $customer->lastName; ?>">
                     </div>
                     <div class="col-12 mt-5">
-                        <label for="txt-email">Correo Electrónico <span class="small text-danger">(Obligatorio)</span></label>
+                        <label for="txt-email">Correo Electrónico</label>
                         <input type="text" id="txt-email" class="form-control modal-required modal-email" value="<?php echo $customer->email; ?>">
                     </div>
                     <div class="col-12 col-lg-6 mt-5">
-                        <label for="txt-phone">Teléfono <span class="small text-danger">(Opcional)</span></label>
+                        <label for="txt-phone">Teléfono</label>
                         <input type="text" id="txt-phone" class="form-control modal-number" maxlength="9" value="<?php if (!empty($customer->phone)) echo $customer->phone; ?>">
                     </div>
                     <?php if (empty($customer->emailVerified)) : ?>
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                             </div>
-                            Si verificas tu cuenta de correo podrás recibir notificaciones sobre el estado de tus citas
+                            Si verificas tu cuenta de correo podrás recibir notificaciones sobre el estado de tus citas.
                         </div>
                     <?php else : ?>
                         <div class="col-12 mt-5">
@@ -110,7 +110,7 @@
                 } else
                     showAlert('warning', 'Lo Sentimos', 'Debe introducir un formato de correo electrónico válido');
             } else
-                showAlert('warning', 'Lo Sentimos!', '¡Hay campos requeridos sin completar!');
+                showAlert('warning', 'Lo Sentimos', '¡Hay campos requeridos sin completar');
         });
 
         function checkRequiredValues() {

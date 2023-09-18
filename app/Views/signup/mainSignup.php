@@ -8,7 +8,7 @@ else
 <script src="<?php echo base_url('assets/js/pages/custom/login/login-general.js'); ?>"></script>
 <div class="d-flex flex-column flex-root">
     <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
-        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('<?php echo base_url('assets/media/bg/bg-5.jpg'); ?>');">
+        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat">
             <div class="login-form text-center p-7 position-relative overflow-hidden">
                 <div class="login-signin" hidden>
                     <form class="form" id="kt_login_signin_form">
@@ -26,11 +26,14 @@ else
                     </div>
                     <div class="mb-20">
                         <h3 class="text-white">Formulario de Registro</h3>
-                        <div class="text-muted font-weight-bold">Ingresa tus datos para crear tu cuenta!</div>
+                        <div class="text-muted font-weight-bold">Ingresa tus datos para crear tu cuenta</div>
                     </div>
                     <form class="form" id="kt_login_signup_form">
                         <div class="form-group mb-5">
                             <input id="txt-name" class="form-control h-auto form-control-solid py-4 px-8 required" type="text" placeholder="Nombre" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input id="txt-lastName" class="form-control h-auto form-control-solid py-4 px-8 required" type="text" placeholder="Apellidos" />
                         </div>
                         <div class="form-group mb-5">
                             <input id="txt-email" class="form-control h-auto form-control-solid py-4 px-8 required email" type="text" placeholder="Correo Electrónico" autocomplete="off" />
@@ -43,15 +46,15 @@ else
                         </div>
                         <div class="form-group mb-5 text-left">
                             <div class="checkbox-inline">
-                                <label class="checkbox m-0">
+                                <label class="checkbox m-0 text-light">
                                     <input id="cbx-terms" type="checkbox" value="0" />
                                     <span></span>Estoy de acuerdo con
-                                    <a id="show-terms" href="#" class="font-weight-bold ml-1">Política de Privacidad</a>.</label>
+                                    <a id="show-terms" href="#" class="font-weight-bold ml-1">Política de Privacidad</a>.
+                                </label>
                             </div>
                             <div id="msg-term" class="fv-plugins-message-container" hidden>
                                 <div data-field="agree" data-validator="notEmpty" class="fv-help-block">Debe aceptar la Política de Privacidad.</div>
                             </div>
-
                         </div>
                         <div class="form-group d-flex flex-wrap flex-center mt-10">
                             <button type="button" id="btn-signup" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Inscribirse</button>
@@ -86,13 +89,13 @@ else
                             url: "<?php echo base_url('Home/signupProcess'); ?>",
                             data: {
                                 'name': $('#txt-name').val(),
+                                'lastName': $('#txt-lastName').val(),
                                 'email': $('#txt-email').val(),
                                 'pass': pass,
                                 'term': term
                             },
                             dataType: "json",
                             success: function(response) {
-                                console.log(response);
                                 switch (response.error) {
                                     case 0:
                                         showAlert('success', 'Perfecto', 'Ya puedes iniciar sesión');
@@ -137,7 +140,7 @@ else
                     $('#main-modal').html(response);
                 },
                 error: function() {
-                    showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                 }
             });
         });

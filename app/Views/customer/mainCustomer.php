@@ -24,7 +24,7 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-                            <div class="symbol-label" style="background-image:url('<?php echo base_url('assets/media/users/300_13.jpg'); ?>')"></div>
+                            <div class="symbol-label" style="background-image:url('<?php echo base_url('assets/media/users/default.jpg'); ?>')"></div>
                             <i class="symbol-badge bg-success"></i>
                         </div>
                         <div>
@@ -34,8 +34,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-5">¡Para reservar una cita, presione en el calendario encima de la fecha deseada!</div>
-                    <div class="mt-5">¡Le ruego cancele su cita si usted no puede asistir por algún motivo, o la reservó por equivocación, Gracias!</div>
+                    <div class="mt-5">Para reservar una cita, presione en el calendario encima de la fecha deseada.</div>
+                    <div class="mt-5">Le ruego cancele su cita si usted no puede asistir por algún motivo, o la reservó por equivocación, Gracias.</div>
                     <div class="col-12 text-center mt-5">
                         <a id="edit-customer-profile" href="#" class="btn btn-sm btn-success font-weight-bold py-2 px-3 px-xxl-5 my-1">Editar Perfil</a>
                     </div>
@@ -73,7 +73,7 @@
                 $('#main-calendar').html(response);
             },
             error: function(error) {
-                showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
             }
         });
     }
@@ -102,7 +102,7 @@
                     $('#main-modal').html(response);
                 },
                 error: function(error) {
-                    showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                 }
             });
         });
@@ -118,7 +118,7 @@
                     $('#main-modal').html(response);
                 },
                 error: function (error) {
-                    showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                 }
             });
         });
@@ -136,7 +136,7 @@
                     $('#main-modal').html(response);
                 },
                 error: function (error) {
-                    showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                 }
             });
         });

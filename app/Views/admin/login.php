@@ -71,14 +71,14 @@
                                 window.location.href = "<?php echo base_url('Admin'); ?>";
                                 break;
                             case 1:
-                                showAlert('error', 'Lo Sentimos!', 'Rectifique sus Clave de Acceso!');
+                                showAlert('error', 'Lo Sentimos', 'Rectifique sus Clave de Acceso');
                                 $('#txt-password').addClass('is-invalid');
                                 $('#btn-login').removeAttr('disabled');
                                 break
                         }
                     },
                     error: function(error) {
-                        showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                        showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                     }
                 });
             }

@@ -61,6 +61,7 @@ class Home extends BaseController
         if (empty($checkDuplicate)) {
             $data = array();
             $data['name'] = htmlspecialchars(trim($this->request->getPost('name')));
+            $data['lastName'] = htmlspecialchars(trim($this->request->getPost('lastName')));
             $data['email'] = $email;
             $data['password'] = htmlspecialchars(trim(password_hash($this->request->getPost('pass'), PASSWORD_DEFAULT)));
             $data['term'] = $this->request->getPost('term');

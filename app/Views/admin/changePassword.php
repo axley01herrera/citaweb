@@ -48,11 +48,11 @@
                         success: function(response) {
                             switch (response.error) {
                                 case 0:
-                                    showAlert('success', 'Perfecto!', 'Su clave de acceso ha sido actucalizada satisfactoriamente!');
+                                    showAlert('success', 'Perfecto', 'Su clave de acceso ha sido actucalizada satisfactoriamente');
                                     $('#modal').modal('hide');
                                     break;
                                 case 1:
-                                    showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                                     break;
                                 case 2:
                                     window.location.href = "<?php echo base_url('Home/index?sessionExpired=true'); ?>";
@@ -60,7 +60,7 @@
                             }
                         },
                         error: function(error) {
-                            showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                            showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                         }
                     });
                 } else

@@ -52,7 +52,7 @@
                                     Si está recibiendo este mensaje es porque ha perdido el acceso a mi sitio web y ha utilizado el método olvidé mi contraseña.
                                 </p>
                                 <p>
-                                    Para poder crear una nueva contraseña presione el botón Crear Nueva Contraseña ma abjo y será redirigido a un formulario. Gracias!
+                                    Para poder crear una nueva contraseña presione el botón Crear Nueva Contraseña ma abjo y será redirigido a un formulario. Gracias.
                                 </p>
                             </td>
                         </tr>
@@ -74,7 +74,7 @@
                         <tr align="center">
                             <td>
                                 <p>
-                                    Si no ha sido usted quién ha realizado esta acción ignore este correo. Gracias!
+                                    Si no ha sido usted quién ha realizado esta acción ignore este correo. Gracias.
                                 </p>
                             </td>
                         </tr>

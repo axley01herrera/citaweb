@@ -107,7 +107,7 @@
                 $('#main-modal').html(response);
             },
             error: function(error) {
-                showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
             }
         });
 

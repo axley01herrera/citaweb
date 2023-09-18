@@ -9,7 +9,6 @@ else
         <div class="col-12 col-lg-3 mt-5">
             <div class="card card-custom">
                 <div class="card-body pt-15">
-                    <!-- User -->
                     <div class="text-center mb-10">
                         <div class="symbol symbol-60 symbol-circle symbol-xl-90">
                             <div class="symbol-label" style="<?php echo $urlImage; ?>"></div>
@@ -19,19 +18,19 @@ else
                         <div class="text-muted mb-2"><a href="<?php echo base_url('Home/loginAdmin'); ?>"><?php echo $config->companyName; ?></a></div>
                     </div>
                     <div class="mt-5">
-                        <span class="font-weight-bold mr-2">Correo Electróico:</span>
+                        <span class="font-weight-bold mr-2">Correo Electrónico</span>
                         <br>
                         <a href="mailto:<?php echo $config->email; ?>" class="text-muted text-hover-primary"><?php echo $config->email; ?></a>
                         <br><br>
-                        <span class="font-weight-bold mr-2">Teléfono:</span>
+                        <span class="font-weight-bold mr-2">Teléfono</span>
                         <br>
                         <a href="tel:<?php echo str_replace(' ', '', $config->phone); ?>" class="text-muted text-hover-primary"><?php echo $config->phone; ?></a>
                     </div>
-                    <div class="pb-6 mt-5">¡Bienvenido a mi perfil profesional en línea, te invito a registrarte para que reserves tus citas aquí!</div>
-                    <a id="btn-registration" href="<?php echo base_url('Home/signup'); ?>" class="btn btn-light-success font-weight-bold py-3 px-6 mb-2 text-center btn-block">Registrate!</a>
+                    <div class="pb-6 mt-5">Bienvenido a mi perfil profesional en línea, te invito a registrarte para que reserves tus citas aquí</div>
+                    <a id="btn-registration" href="<?php echo base_url('Home/signup'); ?>" class="btn btn-light-success font-weight-bold py-3 px-6 mb-2 text-center btn-block">Regístrate</a>
                     <div class="text-center mt-10">
-                        <h3 class="card-title font-weight-bolder">¿Ya eres cliente?</h3>
-                        <p class="text-center font-weight-normal font-size-lg">¡Inicia sesión para gestionar tus citas!</p>
+                        <h3 class="card-title font-weight-bolder">Ya eres cliente</h3>
+                        <p class="text-center font-weight-normal font-size-lg">Inicia sesión para gestionar tus citas</p>
                     </div>
                     <div class="row">
                         <div class="col-12 text-center">
@@ -39,7 +38,7 @@ else
                         </div>
                     </div>
                     <div class="text-center mt-5">
-                        <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-dark-50 text-hover-primary my-3 mr-2">¿Contraseña Olvidada?</a>
+                        <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-dark-50 text-hover-primary my-3 mr-2">Contraseña Olvidada</a>
                     </div>
                     <!-- Contact -->
                     <div class="mt-10 text-center">

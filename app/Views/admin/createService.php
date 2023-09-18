@@ -63,13 +63,13 @@
                             case 0:
                                 getServices();
                                 if('<?php echo $action; ?>' == 'create')
-                                    showAlert('success', 'Perfecto!', 'Servicio creado!');
+                                    showAlert('success', 'Perfecto', 'Servicio creado');
                                 else
-                                    showAlert('success', 'Perfecto!', 'Servicio actualizado!');
+                                    showAlert('success', 'Perfecto', 'Servicio actualizado');
                                 $('#modal').modal('hide');
                                 break;
                             case 1:
-                                showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                                 break;
                             case 2:
                                 window.location.href = "<?php echo base_url('Home/index?sessionExpired=true'); ?>";
@@ -77,7 +77,7 @@
                         }
                     },
                     error: function(error) {
-                        showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                        showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                     }
                 });
 

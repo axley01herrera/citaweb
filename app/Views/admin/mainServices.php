@@ -54,7 +54,7 @@
                 $('#main-modal').html(response);
             },
             error: function(error) {
-                showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
             }
         });
     });
@@ -89,10 +89,10 @@
                     switch (response.error) {
                             case 0:
                                 getServices();
-                                showAlert('success', 'Perfecto!', 'Servicio eliminado!');
+                                showAlert('success', 'Perfecto', 'Servicio eliminado');
                                 break;
                             case 1:
-                                showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                                 break;
                             case 2:
                                 window.location.href = "<?php echo base_url('Home/index?sessionExpired=true'); ?>";
@@ -100,7 +100,7 @@
                         }
                 },
                 error: function(error) {
-                    showAlert('error', 'Lo Sentimos!', 'Ha ocurrido un error!');
+                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                 }
             });
 

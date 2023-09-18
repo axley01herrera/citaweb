@@ -90,7 +90,7 @@
     <script src="<?php echo base_url('assets/datatable/dataTables.bootstrap5.min.js'); ?>"></script>
 </head>
 
-<body style="background-image: url('<?php echo base_url('assets/media/bg/bg-5.jpg'); ?>');">
+<body style="background-color: #181c32;">
     <div id="main-modal"></div>
     <?php echo view($page); ?>
 </body>
