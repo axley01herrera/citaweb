@@ -41,7 +41,7 @@ else
                                     <input id="cbx-remember" type="checkbox" data-value="0">
                                     <span></span>Recuérdame</label>
                             </div>
-                            <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-muted text-hover-primary">Contraseña olvidada</a>
+                            <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-muted text-hover-primary">Olvidé mi Contraseña</a>
                         </div>
                         <div class="form-group d-flex flex-wrap flex-center mt-10">
                             <button type="button" id="btn-login" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Entrar</button>

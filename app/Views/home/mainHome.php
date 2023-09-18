@@ -38,7 +38,7 @@ else
                         </div>
                     </div>
                     <div class="text-center mt-5">
-                        <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-dark-50 text-hover-primary my-3 mr-2">Contraseña Olvidada</a>
+                        <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-dark-50 text-hover-primary my-3 mr-2">Olvidé mi Contraseña</a>
                     </div>
                     <!-- Contact -->
                     <div class="mt-10 text-center">
@@ -261,7 +261,7 @@ else
                                 Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a explorar esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital en constante evolución.
                             </p>
                             <p>
-                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación, Alcapone Barber Shop <a href="https://alcaponebarbershop.com/">https://alcaponebarbershop.com/</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
+                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación, Alcapone Barber Shop <a target="_blank" href="https://alcaponebarbershop.com/">https://alcaponebarbershop.com/</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
                             </p>
                         </div>
                     </div>
