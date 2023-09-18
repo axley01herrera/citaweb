@@ -261,7 +261,7 @@ else
                                 Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a explorar esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital en constante evolución.
                             </p>
                             <p>
-                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación, Alcapone Barber Shop <a target="_blank" href="https://alcaponebarbershop.com/">https://alcaponebarbershop.com/</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
+                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación,  <a target="_blank" href="https://alcaponebarbershop.com/">Alcapone Barber Shop</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
                             </p>
                         </div>
                     </div>
