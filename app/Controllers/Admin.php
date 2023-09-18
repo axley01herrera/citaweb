@@ -45,42 +45,8 @@ class Admin extends BaseController
         $data['profession'] = htmlspecialchars(trim($this->request->getPost('profession')));
         $data['phone'] = htmlspecialchars(trim($this->request->getPost('phone')));
         $data['email'] = htmlspecialchars(trim($this->request->getPost('email')));
-        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
-
-        return json_encode($result);
-    }
-
-    public function updateLink()
-    {
-
-        if (empty($this->objSession->get('user')['role'])) {
-            $result = array();
-            $result['error'] = 2;
-            $result['msg'] = 'session expired';
-
-            return json_encode($result);
-        }
-
-        $data = array();
         $data['facebookLink'] = htmlspecialchars(trim($this->request->getPost('facebook')));
         $data['instagramLink'] = htmlspecialchars(trim($this->request->getPost('instagram')));
-
-        $result = $this->objMainModel->objUpdate('t_config', $data, 1);
-
-        return json_encode($result);
-    }
-
-    public function updateAddress()
-    {
-        if (empty($this->objSession->get('user')['role'])) {
-            $result = array();
-            $result['error'] = 2;
-            $result['msg'] = 'session expired';
-
-            return json_encode($result);
-        }
-
-        $data = array();
         $data['bussinessAddress'] = htmlspecialchars(trim($this->request->getPost('bussinessAddress')));
         $data['bussinessAddress2'] = htmlspecialchars(trim($this->request->getPost('bussinessAddress2')));
         $data['bussinessCity'] = htmlspecialchars(trim($this->request->getPost('bussinessCity')));

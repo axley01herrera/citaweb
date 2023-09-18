@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-20">
                         <h3 class="text-white">Espacio Reservado para el Administrador</h3>
-                        <div class="text-muted font-weight-bold">Ingresa tu Clave de Acceso!</div>
+                        <div class="text-muted font-weight-bold">Ingresa tu Clave de Acceso</div>
                     </div>
                     <form class="form" id="kt_login_signup_form">
                         <div class="form-group mb-5">

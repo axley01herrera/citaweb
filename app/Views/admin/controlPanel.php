@@ -16,8 +16,6 @@
     </div>
 </div>
 <div class="container">
-
-
     <div class="card-toolbar">
         <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
             <!-- Tab Profile -->
