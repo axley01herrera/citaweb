@@ -250,7 +250,6 @@ else
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="font-weight-bolder text-dark">Descripción del Proyecto</span>
                             </h3>
-                            <p>#peluqueros #estilistas #manicuristas #maquilladores #masajistas #esteticistas #terapeutas #abogados #notarios #tutores #entrenadores personales</p>
                         </div>
                         <div class="card-body">
                             <p>
