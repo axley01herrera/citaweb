@@ -218,7 +218,7 @@ else
 
             <div class="row mt-5">
                 <div class="col-12">
-                    <div class="card card-custom wave wave-animate-slow wave-primary mb-8 mb-lg-0">
+                    <div class="card card-custom wave wave-animate-slow wave-primary">
                         <div class="card-header align-items-center border-0 mt-4">
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="font-weight-bolder text-dark">Servicios</span>
@@ -229,10 +229,40 @@ else
                                 <?php foreach ($services as $service) : ?>
                                     <div class="col-12 col-md-3 col-lg-4 mt-5">
                                         <h5><?php echo $service->title; ?></h5>
-                                        <?php echo '€' . number_format($service->price, 2, ".", ','); ?>
+                                        <?php
+                                        if (!empty($service->price))
+                                            echo '€' . number_format($service->price, 2, ".", ',');
+                                        else
+                                            echo 'Gratis';
+                                        ?>
                                     </div>
                                 <?php endforeach ?>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card card-custom wave wave-animate-slow wave-primary mb-8 mb-lg-0">
+                        <div class="card-header align-items-center border-0 mt-4">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="font-weight-bolder text-dark">Descripción del Proyecto</span>
+                            </h3>
+                            <p>#peluqueros #estilistas #manicuristas #maquilladores #masajistas #esteticistas #terapeutas #abogados #notarios #tutores #entrenadores personales</p>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                La gestión eficiente de las citas es esencial para el éxito de su negocio. Una herramienta de gestión de citas personalizada y totalmente adaptada a sus necesidades específicas puede marcar la diferencia en su eficacia operativa y su visibilidad en línea.
+                                Nos complace presentarle una solución que ofrece automatización completa de las reservas por parte de sus clientes y una presencia en línea optimizada. Esta aplicación le brinda la capacidad de llevar a cabo reservas de manera eficiente, garantizando un control seguro y digital de las citas de sus clientes.
+                            </p>
+                            <p>
+                                Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a explorar esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital en constante evolución.
+                            </p>
+                            <p>
+                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación, Alcapone Barber Shop <a href="https://alcaponebarbershop.com/">https://alcaponebarbershop.com/</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
+                            </p>
                         </div>
                     </div>
                 </div>
