@@ -28,9 +28,7 @@
                     - Comunicación.
                 </p>
                 <h5>TUS DERECHOS</h5>
-                <p>Si usted es un residente europeo, tiene derecho a acceder a la información personal que tenemos sobre usted y a solicitar que su información personal se corrija, actualice o elimine. Si desea ejercer este derecho, contáctenos a través de la información de contacto a continuación.
-                <p>Además, si usted es un residente europeo, notamos que estamos procesando su información para cumplir con los contratos que podríamos tener con usted (por ejemplo, si realiza un pedido a través del Sitio), o de otra manera para perseguir nuestros intereses comerciales legítimos mencionados anteriormente. Además, tenga en cuenta que su información se transferirá fuera de Europa, incluso a Canadá y los Estados Unidos.</p>
-
+                <p>Si usted es un residente europeo, tiene derecho a acceder a la información personal que tenemos sobre usted y a solicitar que su información personal se corrija, actualice o elimine. Si desea ejercer este derecho, contáctenos.</p>
                 <h5>RETENCIÓN DE DATOS</h5>
                 <p>Podemos actualizar esta política de privacidad de vez en cuando para reflejar, por ejemplo, cambios en nuestras prácticas o por otras razones operativas, legales o reglamentarias.</p>
 
