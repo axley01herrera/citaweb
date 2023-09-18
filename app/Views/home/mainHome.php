@@ -38,7 +38,7 @@ else
                         </div>
                     </div>
                     <div class="text-center mt-5">
-                        <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-dark-50 text-hover-primary my-3 mr-2">Olvidé mi Contraseña</a>
+                        <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-dark-50 text-hover-primary my-3 mr-2">Recuperar Contraseña</a>
                     </div>
                     <!-- Contact -->
                     <div class="mt-10 text-center">
