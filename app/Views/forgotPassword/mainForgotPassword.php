@@ -8,7 +8,7 @@ else
 <script src="<?php echo base_url('assets/js/pages/custom/login/login-general.js'); ?>"></script>
 <div class="d-flex flex-column flex-root">
     <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
-        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('<?php echo base_url('assets/media/bg/bg-5.jpg'); ?>');">
+        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat">
             <div class="login-form text-center p-7 position-relative overflow-hidden">
                 <div class="login-signin" hidden>
                     <form class="form" id="kt_login_signin_form">
