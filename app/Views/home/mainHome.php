@@ -77,7 +77,7 @@ else
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="card card-custom wave wave-animate-slow wave-primary mb-lg-0">
-                        <div class="card-header align-items-center border-0 mt-4">
+                        <div class="card-header align-items-center border-0">
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="font-weight-bolder text-dark">Horarios</span>
                             </h3>
@@ -219,7 +219,7 @@ else
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="card card-custom wave wave-animate-slow wave-primary">
-                        <div class="card-header align-items-center border-0 mt-4">
+                        <div class="card-header align-items-center border-0">
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="font-weight-bolder text-dark">Servicios</span>
                             </h3>
@@ -246,7 +246,7 @@ else
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="card card-custom wave wave-animate-slow wave-primary mb-8 mb-lg-5">
-                        <div class="card-header align-items-center border-0 mt-4">
+                        <div class="card-header align-items-center border-0">
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="font-weight-bolder text-dark">Descripción del Proyecto</span>
                             </h3>
