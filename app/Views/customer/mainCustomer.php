@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-12 col-md-3 col-lg-3 mt-5">
-            <div class="card card-custom">
+        <div class="col-12 col-md-3 col-lg-3 ">
+            <div class="card card-custom mt-5">
                 <div class="card-body pt-4">
                     <div class="d-flex justify-content-end">
                         <div class="dropdown dropdown-inline">
@@ -28,7 +28,7 @@
                             <i class="symbol-badge bg-success"></i>
                         </div>
                         <div>
-                            <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?php echo $customer->name; ?></a>
+                            <a href="#" class="edit-customer-profile font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?php echo $customer->name; ?></a>
                             <div class="mt-2">
                                 <a href="<?php echo base_url('Home'); ?>" class="btn btn-sm btn-danger font-weight-bold py-2 px-3 px-xxl-5 my-1">Salir</a>
                             </div>
@@ -37,11 +37,11 @@
                     <div class="mt-5">Para reservar una cita, presione en el calendario encima de la fecha deseada.</div>
                     <div class="mt-5">Le ruego cancele su cita si usted no puede asistir por algún motivo, o la reservó por equivocación, Gracias.</div>
                     <div class="col-12 text-center mt-5">
-                        <a id="edit-customer-profile" href="#" class="btn btn-sm btn-success font-weight-bold py-2 px-3 px-xxl-5 my-1">Editar Perfil</a>
+                        <a href="#" class="edit-customer-profile btn btn-sm btn-success font-weight-bold py-2 px-3 px-xxl-5 my-1">Editar Perfil</a>
                     </div>
                 </div>
             </div>
-            <div class="card card-custom mt-5">
+            <div class="card card-custom mt-5 mb-lg-5">
                 <div class="card-body pt-4">
                     <h5>Próximas Citas</h5>
                     <div id="main-customer-appointments"></div>
@@ -123,7 +123,7 @@
             });
         });
 
-        $('#edit-customer-profile').on('click', function (e) {
+        $('.edit-customer-profile').on('click', function (e) {
             e.preventDefault();
             $.ajax({
                 type: "post",

@@ -1,6 +1,6 @@
 <?php if (empty($appointments)) : ?>
     <div class="alert alert-custom alert-light-warning fade show mt-5" role="alert">
-        <div class="alert-text text-danger text-center">No tienes próximas citas!</div>
+        <div class="alert-text text-danger text-center">No existen próximas citas</div>
     </div>
     <?php else : foreach ($appointments as $appointment) : ?>
         <div class="mt-5 p-1 border">
