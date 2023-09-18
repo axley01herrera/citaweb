@@ -12,19 +12,19 @@
                 <!-- Title -->
                 <div class="form-group row">
                     <div class="col-12">
-                        <input type="text" id="txt-title" class="required-service form-control form-control-lg form-control-solid" placeholder="Título" value="<?php echo @$service->title; ?>" />
+                        <input type="text" id="txt-title" class="required-service form-control" placeholder="Título" value="<?php echo @$service->title; ?>" />
                     </div>
                 </div>
                 <!-- Price -->
                 <div class="form-group row">
                     <div class="col-3">
-                        <input type="text" id="txt-price" class="required-service form-control form-control-lg form-control-solid" placeholder="Precio" value="<?php if(!empty($service->price)) echo  number_format($service->price, 2, ".", ','); ?>" />
+                        <input type="text" id="txt-price" class="form-control" placeholder="Precio" value="<?php if(!empty($service->price)) echo  number_format($service->price, 2, ".", ','); ?>" />
                     </div>
                 </div>
                 <!-- Description -->
                 <div class="form-group row">
                     <div class="col-12">
-                        <textarea id="txt-description" class="form-control form-control-lg form-control-solid" rows="3" placeholder="Descripción"><?php echo @$service->description; ?></textarea>
+                        <textarea id="txt-description" class="form-control" rows="3" placeholder="Descripción"><?php echo @$service->description; ?></textarea>
                     </div>
                 </div>
             </div>

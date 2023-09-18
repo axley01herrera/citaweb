@@ -94,10 +94,10 @@ else
                                             - <?php echo date("h:i A", strtotime($config->monday_end1)); ?>
                                         <?php endif ?>
                                         <br>
-                                        <?php if (!empty($config->monday_start2) && $config->monday_start2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->monday_start2)) : ?>
                                             <?php echo date("h:i A", strtotime($config->monday_start2)); ?>
                                         <?php endif ?>
-                                        <?php if (!empty($config->monday_end2) && $config->monday_end2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->monday_end2)) : ?>
                                             - <?php echo date("h:i A", strtotime($config->monday_end2)); ?>
                                         <?php endif ?>
                                     </div>
@@ -112,10 +112,10 @@ else
                                             - <?php echo date("h:i A", strtotime($config->tuesday_end1)); ?>
                                         <?php endif ?>
                                         <br>
-                                        <?php if (!empty($config->tuesday_start2) && $config->tuesday_start2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->tuesday_start2)) : ?>
                                             <?php echo date("h:i A", strtotime($config->tuesday_start2)); ?>
                                         <?php endif ?>
-                                        <?php if (!empty($config->tuesday_end2) && $config->tuesday_end2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->tuesday_end2)) : ?>
                                             - <?php echo date("h:i A", strtotime($config->tuesday_end2)); ?>
                                         <?php endif ?>
                                     </div>
@@ -130,10 +130,10 @@ else
                                             - <?php echo date("h:i A", strtotime($config->wednesday_end1)); ?>
                                         <?php endif ?>
                                         <br>
-                                        <?php if (!empty($config->wednesday_start2) && $config->wednesday_start2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->wednesday_start2)) : ?>
                                             <?php echo date("h:i A", strtotime($config->wednesday_start2)); ?>
                                         <?php endif ?>
-                                        <?php if (!empty($config->wednesday_end2) && $config->wednesday_end2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->wednesday_end2)) : ?>
                                             - <?php echo date("h:i A", strtotime($config->wednesday_end2)); ?>
                                         <?php endif ?>
                                     </div>
@@ -148,10 +148,10 @@ else
                                             - <?php echo date("h:i A", strtotime($config->thursday_end1)); ?>
                                         <?php endif ?>
                                         <br>
-                                        <?php if (!empty($config->thursday_start2) && $config->thursday_start2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->thursday_start2)) : ?>
                                             <?php echo date("h:i A", strtotime($config->thursday_start2)); ?>
                                         <?php endif ?>
-                                        <?php if (!empty($config->thursday_end2) && $config->thursday_end2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->thursday_end2)) : ?>
                                             - <?php echo date("h:i A", strtotime($config->thursday_end2)); ?>
                                         <?php endif ?>
                                     </div>
@@ -166,10 +166,10 @@ else
                                             - <?php echo date("h:i A", strtotime($config->friday_end1)); ?>
                                         <?php endif ?>
                                         <br>
-                                        <?php if (!empty($config->friday_start2) && $config->friday_start2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->friday_start2)) : ?>
                                             <?php echo date("h:i A", strtotime($config->friday_start2)); ?>
                                         <?php endif ?>
-                                        <?php if (!empty($config->friday_end2) && $config->friday_end2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->friday_end2)) : ?>
                                             - <?php echo date("h:i A", strtotime($config->friday_end2)); ?>
                                         <?php endif ?>
                                     </div>
@@ -184,10 +184,10 @@ else
                                             - <?php echo date("h:i A", strtotime($config->saturday_end1)); ?>
                                         <?php endif ?>
                                         <br>
-                                        <?php if (!empty($config->saturday_start2) && $config->saturday_start2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->saturday_start2)) : ?>
                                             <?php echo date("h:i A", strtotime($config->saturday_start2)); ?>
                                         <?php endif ?>
-                                        <?php if (!empty($config->saturday_end2) && $config->saturday_end2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->saturday_end2)) : ?>
                                             - <?php echo date("h:i A", strtotime($config->saturday_end2)); ?>
                                         <?php endif ?>
                                     </div>
@@ -202,10 +202,10 @@ else
                                             - <?php echo date("h:i A", strtotime($config->sunday_end1)); ?>
                                         <?php endif ?>
                                         <br>
-                                        <?php if (!empty($config->sunday_start2) && $config->sunday_start2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->sunday_start2)) : ?>
                                             <?php echo date("h:i A", strtotime($config->sunday_start2)); ?>
                                         <?php endif ?>
-                                        <?php if (!empty($config->sunday_end2) && $config->sunday_end2 != '00:00:00') : ?>
+                                        <?php if (!empty($config->sunday_end2)) : ?>
                                             - <?php echo date("h:i A", strtotime($config->sunday_end2)); ?>
                                         <?php endif ?>
                                     </div>

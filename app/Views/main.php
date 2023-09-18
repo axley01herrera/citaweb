@@ -16,6 +16,7 @@
     <link href="<?php echo base_url('assets/plugins/custom/prismjs/prismjs.bundle.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/css/style.bundle.css'); ?>" rel="stylesheet" type="text/css" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/datatable/dataTables.bootstrap5.min.css'); ?>" />
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/timepicker/timepicker.css'); ?>" />
 
     <!-- Global JS -->
     <script>
@@ -88,6 +89,7 @@
     <script src='<?php echo base_url('assets/fullcalendar/packages/core/locales/es.global.js'); ?>'></script>
     <script src="<?php echo base_url('assets/datatable/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/datatable/dataTables.bootstrap5.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/timepicker/timepicker.js'); ?>"></script>
 </head>
 
 <body style="background-color: #181c32;">

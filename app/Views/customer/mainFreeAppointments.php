@@ -21,7 +21,7 @@ if ($config->$dayWeek == 1) { // Validate Bussines Day
     $timeOff = $config->timeOff * 60;
 ?>
     <div class="row">
-        <?php if (!empty($start1) && $start1 != '00:00:00') : ?>
+        <?php if (!empty($start1)) : ?>
             <div class="col-12">
                 <h5>Primer Turno</h5>
                 <div class="row mt-5">
@@ -59,7 +59,7 @@ if ($config->$dayWeek == 1) { // Validate Bussines Day
             </div>
         <?php endif ?>
 
-        <?php if (!empty($start2) && $start2 != '00:00:00') : ?>
+        <?php if (!empty($start2)) : ?>
             <div class="col-12 mt-5">
                 <h5>Segundo Turno</h5>
                 <div class="row mt-5">

@@ -9,10 +9,10 @@
             </div>
             <div class="modal-body">
                 <div class="form-group mb-5">
-                    <input id="txt-password" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Contraseña" />
+                    <input id="txt-password" class="form-control required" type="password" placeholder="Contraseña" />
                 </div>
                 <div class="form-group mb-5">
-                    <input id="txt-passwordc" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Confirmar Contraseña" />
+                    <input id="txt-passwordc" class="form-control required" type="password" placeholder="Confirmar Contraseña" />
                 </div>
             </div>
             <div class="modal-footer">

@@ -98,13 +98,13 @@ class Admin extends BaseController
 
         $field3 = $this->request->getPost('field3');
         if (empty($this->request->getPost('value3')))
-            $value3 = 'NULL';
+            $value3 = NULL;
         else
             $value3 = htmlspecialchars(trim(date('H:i:s', strtotime($this->request->getPost('value3')))));
 
         $field4 = $this->request->getPost('field4');
         if (empty($this->request->getPost('value4')))
-            $value4 = 'NULL';
+            $value4 = NULL;
         else
             $value4 = htmlspecialchars(trim(date('H:i:s', strtotime($this->request->getPost('value4')))));
 

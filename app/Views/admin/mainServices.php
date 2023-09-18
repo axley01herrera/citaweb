@@ -7,7 +7,7 @@
 
 <?php foreach ($services as $service) : ?>
 
-    <div class="card card-custom mt-5">
+    <div class="card card-custom mt-2">
         <div class="card-header">
             <div class="card-title">
                 <span class="card-icon">
@@ -15,11 +15,18 @@
                 </span>
                 <h3 class="card-label">
                     <?php echo $service->title; ?>
-                    <small><?php echo '€' . number_format($service->price, 2, ".", ','); ?></small>
+                    <small>
+                        <?php 
+                            if(!empty($service->price))
+                                echo '€' . number_format($service->price, 2, ".", ','); 
+                            else
+                                echo 'Gratis';
+                        ?>
+                    </small>
                 </h3>
             </div>
             <div class="card-toolbar">
-                <a href="#" data-id="<?php echo $service->id; ?>" class="edit-service btn btn-sm btn-success font-weight-bold mr-1">
+                <a href="#" data-id="<?php echo $service->id; ?>" class="edit-service btn btn-sm btn-warning font-weight-bold mr-1">
                     Editar
                 </a>
                 <a href="#" data-id="<?php echo $service->id; ?>" class="del-service btn btn-sm btn-danger font-weight-bold ms-1">
@@ -29,7 +36,7 @@
         </div>
         <div class="card-body">
             <?php if (!empty($service->description)) : echo $service->description;
-            else : echo 'Servicio sin descripción!';
+            else : echo 'Servicio sin descripción';
             endif ?>
         </div>
     </div>
@@ -64,13 +71,13 @@
         let id = $(this).attr('data-id');
 
         Swal.fire({
-            title: 'Eliminar Servicio?',
-            text: "Está Seguro que desea eliminar este servicio!",
+            title: 'Eliminar Servicio',
+            text: "Está Seguro que desea eliminar este servicio",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, eliminar!',
+            confirmButtonText: 'Si, eliminar',
             cancelButtonText: 'Cerrar',
             customClass: {
                 confirmButton: 'delete'

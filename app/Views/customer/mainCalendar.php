@@ -86,7 +86,7 @@
                         }
                     });
                 } else {
-                    showAlert('warning', 'Lo siento!', 'Ya no se pueden reservar citas en la fecha seleccionada!');
+                    showAlert('warning', 'Lo siento', 'Ya no se pueden reservar citas en la fecha seleccionada');
                 }
             },
             eventClick: function(calEvent) { // When click event
@@ -105,11 +105,11 @@
                             $('#main-modal').html(response);
                         },
                         error: function(error) {
-                            showAlert('warning', 'Lo siento!', 'Ya no se puede cancelar esta cita!');
+                            showAlert('warning', 'Lo siento', 'Ya no se puede cancelar esta cita');
                         }
                     });
                 } else {
-                    showAlert('warning', 'Lo siento!', 'Ya no se puede cancelar esta cita!');
+                    showAlert('warning', 'Lo siento', 'Ya no se puede cancelar esta cita');
                 }
             },
             eventMouseEnter: function(calEvent) {

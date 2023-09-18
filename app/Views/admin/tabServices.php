@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 mt-2 text-right">
         <button id="btn-new-service" type="button" class="btn btn-primary font-weight-bold">Nuevo Servicio</button>
     </div>
 </div>

@@ -1,45 +1,49 @@
 <div class="table-responsive">
-    <table id="dt-customer" class="table dataTables_wrapper dt-bootstrap4 no-footer">
-        <thead>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Correo Electrónico</th>
-            <th>Teléfono</th>
-            <th class="text-center">Correo Verificado</th>
-            <th>Inactivo / Activo</th>
-            <th class="text-center">Acciones</th>
-        </thead>
-        <tbody>
-            <?php foreach ($customers as $customer) : ?>
-                <tr>
-                    <td><?php echo $customer->name; ?></td>
-                    <td><?php echo $customer->lastName; ?></td>
-                    <td><?php echo $customer->email; ?></td>
-                    <td><?php if(!empty($customer->phone)) echo $customer->phone; ?></td>
-                    <td class="text-center">
-                        <?php if (!empty($customer->emailVerified)) : ?>
-                            <i class="flaticon2-checkmark text-success"></i>
-                        <?php else : ?>
-                            <i class="flaticon2-cancel text-danger"></i>
-                        <?php endif ?>
-                    </td>
-                    <td class="text-center">
-                        <div class="text-center">
-                            <span class="switch switch-outline switch-icon switch-primary">
-                                <label>
-                                    <input class="cbx-customerStatus" type="checkbox" <?php if ($customer->status == 1) echo "checked"; ?> data-id="<?php echo $customer->id; ?>" data-status="<?php echo $customer->status; ?>" />
-                                    <span></span>
-                                </label>
-                            </span>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <button class="btn-edit btn btn-sm btn-warning" data-customer-id="<?php echo $customer->id; ?>">Editar</button>
-                    </td>
-                </tr>
-            <?php endforeach ?>
-        </tbody>
-    </table>
+    <div class="card mb-5 mt-2">
+        <div class="card-body">
+            <table id="dt-customer" class="table dataTables_wrapper dt-bootstrap4 no-footer">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo Electrónico</th>
+                    <th>Teléfono</th>
+                    <th class="text-center">Correo Verificado</th>
+                    <th>Inactivo / Activo</th>
+                    <th class="text-center">Acciones</th>
+                </thead>
+                <tbody>
+                    <?php foreach ($customers as $customer) : ?>
+                        <tr>
+                            <td><?php echo $customer->name; ?></td>
+                            <td><?php echo $customer->lastName; ?></td>
+                            <td><?php echo $customer->email; ?></td>
+                            <td><?php if(!empty($customer->phone)) echo $customer->phone; ?></td>
+                            <td class="text-center">
+                                <?php if (!empty($customer->emailVerified)) : ?>
+                                    <i class="flaticon2-checkmark text-success"></i>
+                                <?php else : ?>
+                                    <i class="flaticon2-cancel text-danger"></i>
+                                <?php endif ?>
+                            </td>
+                            <td class="text-center">
+                                <div class="text-center">
+                                    <span class="switch switch-outline switch-icon switch-primary">
+                                        <label>
+                                            <input class="cbx-customerStatus" type="checkbox" <?php if ($customer->status == 1) echo "checked"; ?> data-id="<?php echo $customer->id; ?>" data-status="<?php echo $customer->status; ?>" />
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn-edit btn btn-sm btn-warning" data-customer-id="<?php echo $customer->id; ?>">Editar</button>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script>

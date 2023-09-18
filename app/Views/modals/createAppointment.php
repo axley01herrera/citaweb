@@ -14,16 +14,16 @@
                 <div class="row">
                     <?php if (!empty($customers)) : ?>
                         <div class="col-12 mt-5">
-                            <select id="sel-customer" class="form-control form-control-solid">
+                            <select id="sel-customer" class="form-control">
                                 <option value="" hidden>Seleccione un Cliente (Obligatorio)</option>
                                 <?php foreach ($customers as $customer) : ?>
-                                    <option value="<?php echo $customer->id; ?>"><?php echo $customer->name; ?> ( <?php echo $customer->email; ?> )</option>
+                                    <option value="<?php echo $customer->id; ?>"><?php echo $customer->name; ?> <?php echo $customer->lastName; ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                     <?php endif ?>
                     <div class="col-12 mt-5">
-                        <select id="sel-service" class="form-control form-control-solid">
+                        <select id="sel-service" class="form-control">
                             <option value="" hidden>Seleccione un Servicio (Opcional)</option>
                             <?php foreach ($services as $service) : ?>
                                 <option value="<?php echo $service->id; ?>"><?php echo $service->title; ?> <?php echo '€' . number_format($service->price, 2, ".", ','); ?></option>
@@ -34,7 +34,7 @@
                 <div id="main-appointment" class="mt-5"></div>
                 <div class="row mt-5">
                     <div class="col-12">
-                        <textarea id="txt-description" class="form-control form-control-solid" rows="3" placeholder="Descripción (Opcional)"></textarea>
+                        <textarea id="txt-description" class="form-control" rows="3" placeholder="Descripción (Opcional)"></textarea>
                     </div>
                 </div>
                 <div class="alert alert-custom alert-light-warning fade show mt-5" role="alert">

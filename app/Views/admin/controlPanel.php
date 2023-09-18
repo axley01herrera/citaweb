@@ -67,14 +67,10 @@
             </li>
         </ul>
     </div>
-
-
-    <div class="card mt-2 mb-5">
-        <div class="card-body">
-            <div id="tab-content"></div>
-            <div id="main-calendar"></div>
-        </div>
-    </div>
+ 
+    <div id="tab-content"></div>
+    <div id="main-calendar" class="mt-2 mb-5"></div>
+        
 </div>
 
 <script>
