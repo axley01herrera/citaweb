@@ -245,15 +245,10 @@ else
 
             <div class="row mt-5">
                 <div class="col-12">
-                    <div class="card card-custom wave wave-animate-slow wave-primary mb-8 mb-lg-5">
-                        <div class="card-header align-items-center border-0">
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="font-weight-bolder text-dark">Descripción del Proyecto</span>
-                            </h3>
-                        </div>
+                    <div class="card card-custom mb-8 mb-lg-5">
                         <div class="card-body">
                             <p>
-                                Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a explorar esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital.
+                                Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a conocer esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital.
                             </p>
                             <p>
                                 La gestión eficiente de las citas es esencial para el éxito de tu negocio. Una herramienta personalizada y totalmente adaptada a tus necesidades puede marcar la diferencia en tu eficacia.

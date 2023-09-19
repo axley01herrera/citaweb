@@ -14,13 +14,15 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-12">
-                        <textarea id="txt-description" class="form-control form-control-solid" rows="3" placeholder="Motivo por el cuál cancela la cita (Opcional)"></textarea>
+                        <label for="txt-description">Motivo por el cuál cancela la cita (Opcional)</label>
+                        <textarea id="txt-description" class="form-control" rows="3"></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer">
                 <button id="btn-cancel" type="button" class="btn btn-danger">Si, Cancelar la Cita</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>

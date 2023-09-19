@@ -14,8 +14,9 @@
                 <div class="row">
                     <?php if (!empty($customers)) : ?>
                         <div class="col-12 mt-5">
+                            <label for="sel-customer">Seleccione un Cliente (Obligatorio)</label>
                             <select id="sel-customer" class="form-control">
-                                <option value="" hidden>Seleccione un Cliente (Obligatorio)</option>
+                                <option value="" hidden></option>
                                 <?php foreach ($customers as $customer) : ?>
                                     <option value="<?php echo $customer->id; ?>"><?php echo $customer->name; ?> <?php echo $customer->lastName; ?></option>
                                 <?php endforeach ?>
@@ -23,10 +24,11 @@
                         </div>
                     <?php endif ?>
                     <div class="col-12 mt-5">
+                        <label for="sel-service">Seleccione un Servicio (Opcional)</label>
                         <select id="sel-service" class="form-control">
-                            <option value="" hidden>Seleccione un Servicio (Opcional)</option>
+                            <option value="" hidden></option>
                             <?php foreach ($services as $service) : ?>
-                                <option value="<?php echo $service->id; ?>"><?php echo $service->title; ?> <?php echo '€' . number_format($service->price, 2, ".", ','); ?></option>
+                                <option value="<?php echo $service->id; ?>"><?php echo $service->title; ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -34,7 +36,8 @@
                 <div id="main-appointment" class="mt-5"></div>
                 <div class="row mt-5">
                     <div class="col-12">
-                        <textarea id="txt-description" class="form-control" rows="3" placeholder="Descripción (Opcional)"></textarea>
+                        <label for="txt-description">Descripción (Opcional)</label>
+                        <textarea id="txt-description" class="form-control" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="alert alert-custom alert-light-warning fade show mt-5" role="alert">

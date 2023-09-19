@@ -1,4 +1,3 @@
-<!-- Modal-->
 <div class="modal fade" id="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -9,23 +8,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Title -->
-                <div class="form-group row">
-                    <div class="col-12">
-                        <input type="text" id="txt-title" class="required-service form-control" placeholder="Título" value="<?php echo @$service->title; ?>" />
-                    </div>
+                <div class="col-12">
+                    <label for="txt-title">Título</label>
+                    <input type="text" id="txt-title" class="required-service form-control" value="<?php echo @$service->title; ?>" />
                 </div>
-                <!-- Price -->
-                <div class="form-group row">
-                    <div class="col-3">
-                        <input type="text" id="txt-price" class="form-control" placeholder="Precio" value="<?php if(!empty($service->price)) echo  number_format($service->price, 2, ".", ','); ?>" />
-                    </div>
+                <div class="col-3 mt-5">
+                    <label for="txt-price">Precio</label>
+                    <input type="text" id="txt-price" class="form-control" value="<?php if (!empty($service->price)) echo  number_format($service->price, 2, ".", ','); ?>" />
                 </div>
-                <!-- Description -->
-                <div class="form-group row">
-                    <div class="col-12">
-                        <textarea id="txt-description" class="form-control" rows="3" placeholder="Descripción"><?php echo @$service->description; ?></textarea>
-                    </div>
+                <div class="col-12 mt-5">
+                    <label for="txt-description">Descripción</label>
+                    <textarea id="txt-description" class="form-control" rows="3"><?php echo @$service->description; ?></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -62,7 +55,7 @@
                         switch (response.error) {
                             case 0:
                                 getServices();
-                                if('<?php echo $action; ?>' == 'create')
+                                if ('<?php echo $action; ?>' == 'create')
                                     showAlert('success', 'Perfecto', 'Servicio creado');
                                 else
                                     showAlert('success', 'Perfecto', 'Servicio actualizado');

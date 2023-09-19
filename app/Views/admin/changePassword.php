@@ -3,17 +3,19 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="modalLabel" class="modal-title">Nueva Contraseña</h5>
+                <h5 id="modalLabel" class="modal-title">Clave de Acceso</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group mb-5">
-                    <input id="txt-password" class="form-control required" type="password" placeholder="Contraseña" />
+                    <label for="txt-password">Nueva Clave</label>
+                    <input id="txt-password" class="form-control required" type="password" />
                 </div>
                 <div class="form-group mb-5">
-                    <input id="txt-passwordc" class="form-control required" type="password" placeholder="Confirmar Contraseña" />
+                    <label for="txt-passwordc">Confirmar</label>
+                    <input id="txt-passwordc" class="form-control required" type="password" />
                 </div>
             </div>
             <div class="modal-footer">
