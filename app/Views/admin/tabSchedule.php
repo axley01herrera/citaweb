@@ -7,7 +7,7 @@
         <div class="col-12 col-md-6 col-lg-2">
             <div class="card">
                 <div class="card-body">
-                    <label for="txt-timeOff">Tiempo entre tunos en minutos</label>
+                    <label for="txt-timeOff">Intervalo entre citas</label>
                     <input type="text" id="txt-timeOff" class="form-control" value="<?php echo $config->timeOff; ?>" />
                     <div class="col-12 mt-2 text-center">
                         <button id="save-timeOff" type="button" class="btn btn-primary font-weight-bold">Guardar</button>

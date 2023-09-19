@@ -1,5 +1,5 @@
 <?php if (sizeof($services) == 0) : ?>
-    <div class="alert alert-custom alert-danger mt-10" role="alert">
+    <div class="alert alert-custom alert-danger mt-2" role="alert">
         <div class="alert-icon"><i class="flaticon-warning"></i></div>
         <div class="alert-text">No hay servicios disponibles.</div>
     </div>

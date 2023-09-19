@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Axley Herrera | <?php echo $title; ?></title>
+    <title><?php echo $title; ?></title>
     <meta name="Manejo de Reserva de Citas" content="Profile" />
     <meta content="Axley Herrera" name="author" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

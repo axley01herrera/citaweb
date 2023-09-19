@@ -14,6 +14,17 @@ class Admin extends BaseController
     {
         $this->objSession = session();
         $this->objMainModel = new MainModel;
+
+        $emailConfig = array();
+        $emailConfig['protocol'] = EMAIL_PROTOCOL;
+        $emailConfig['SMTPHost'] = EMAIL_SMTP_HOST;
+        $emailConfig['SMTPUser'] = EMAIL_SMTP_USER;
+        $emailConfig['SMTPPass'] = EMAIL_SMTP_PASSWORD;
+        $emailConfig['SMTPPort'] = EMAIL_SMTP_PORT;
+        $emailConfig['SMTPCrypto'] = EMAIL_SMTP_CRYPTO;
+        $emailConfig['mailType'] = EMAIL_MAIL_TYPE;
+
+        $this->objEmail = \Config\Services::email($emailConfig);
     }
 
     public function index()
@@ -296,5 +307,56 @@ class Admin extends BaseController
                 return view('admin/tabCustomers');
                 break;
         }
+    }
+
+    public function newCustomer()
+    {
+        if (empty($this->objSession->get('user')))
+            return view('errorPage/sessionExpired');
+
+        return view('admin/createCustomer');
+    }
+
+    public function signupProcess()
+    {
+        $email = htmlspecialchars(trim($this->request->getPost('email')));
+        $checkDuplicate = $this->objMainModel->objcheckDuplicate('t_customer', 'email', $email, '');
+
+        if (empty($checkDuplicate)) {
+            $data = array();
+            $data['name'] = htmlspecialchars(trim($this->request->getPost('name')));
+            $data['lastName'] = htmlspecialchars(trim($this->request->getPost('lastName')));
+            $data['email'] = $email;
+            $data['password'] = htmlspecialchars(trim(password_hash($this->request->getPost('pass'), PASSWORD_DEFAULT)));
+            $data['term'] = $this->request->getPost('term');
+            $data['token'] = md5(uniqid());
+
+            $this->objMainModel->objCreate('t_customer', $data);
+
+            $emailData = array();
+            $emailData['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
+            $emailData['url'] = base_url('Home/confirmSignup') . '/' . $data['token'];
+
+            $this->objEmail->setFrom(EMAIL_SMTP_USER, $emailData['config']->companyName);
+            $this->objEmail->setTo($email);
+            $this->objEmail->setSubject($emailData['config']->companyName);
+            $this->objEmail->setMessage(view('email/mailSignup', $emailData));
+
+            if ($this->objEmail->send(false)) {
+                $result = array();
+                $result['error'] = 0;
+                $result['msg'] = 'success';
+            } else {
+                $result = array();
+                $result['error'] = 1;
+                $result['msg'] = 'error send email';
+            }
+        } else {
+            $result = array();
+            $result['error'] = 100;
+            $result['msg'] = 'duplicate email';
+        }
+
+        return json_encode($result);
     }
 }
