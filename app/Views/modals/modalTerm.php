@@ -28,12 +28,17 @@
                     - Comunicación.
                 </p>
                 <h5>TUS DERECHOS</h5>
-                <p>Si usted es un residente europeo, tiene derecho a acceder a la información personal que tenemos sobre usted y a solicitar que su información personal se corrija, actualice o elimine. Si desea ejercer este derecho, contáctenos.</p>
-                <h5>RETENCIÓN DE DATOS</h5>
-                <p>Podemos actualizar esta política de privacidad de vez en cuando para reflejar, por ejemplo, cambios en nuestras prácticas o por otras razones operativas, legales o reglamentarias.</p>
-
+                <p>
+                    Si usted es un residente europeo, tiene derecho a acceder a la información personal que tenemos sobre usted y a solicitar que su información personal se corrija, actualice o elimine. Si desea ejercer este derecho, contáctenos.
+                </p>
+    
                 <h5>MENORES</h5>
-                <p>El sitio no está destinado a personas menores de la edad de 18 años.</p>
+                <p>
+                    El sitio no está destinado a personas menores de la edad de 18 años.
+                </p>
+
+                <p>
+                    Podemos actualizar esta política de privacidad de vez en cuando para reflejar, por ejemplo, cambios en nuestras prácticas o por otras razones operativas, legales o reglamentarias.</p>
                 <p>
                     [Re: Oficial de Cumplimiento de Privacidad]
                 </p>
