@@ -253,14 +253,15 @@ else
                         </div>
                         <div class="card-body">
                             <p>
-                                La gestión eficiente de las citas es esencial para el éxito de su negocio. Una herramienta de gestión de citas personalizada y totalmente adaptada a sus necesidades específicas puede marcar la diferencia en su eficacia operativa y su visibilidad en línea.
-                                Nos complace presentarle una solución que ofrece automatización completa de las reservas por parte de sus clientes y una presencia en línea optimizada. Esta aplicación le brinda la capacidad de llevar a cabo reservas de manera eficiente, garantizando un control seguro y digital de las citas de sus clientes.
+                                Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a explorar esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital.
                             </p>
                             <p>
-                                Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a explorar esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital en constante evolución.
+                                La gestión eficiente de las citas es esencial para el éxito de tu negocio. Una herramienta personalizada y totalmente adaptada a tus necesidades puede marcar la diferencia en tu eficacia.
+                                Me complace presentarle una solución que ofrece automatización completa de las reservas por parte de tus clientes y una presencia en línea. Esta aplicación le brinda la capacidad de llevar a cabo reservas de manera eficiente, garantizando un control seguro y digital de las citas de tus clientes.
                             </p>
+
                             <p>
-                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación,  <a target="_blank" href="https://alcaponebarbershop.com/">Alcapone Barber Shop</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
+                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación, <a target="_blank" href="https://alcaponebarbershop.com/">Alcapone Barber Shop</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
                             </p>
                         </div>
                     </div>
