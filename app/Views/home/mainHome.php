@@ -273,7 +273,7 @@ else
         <div class="nav nav-dark order-1 order-md-2">
             <a href="https://axleyherrera.com/" target="_blank" class="nav-link pr-3 pl-0">Quién Soy</a>
             <a id="show-terms" href="#" target="_blank" class="nav-link pr-3 pl-0">Política de Privacidad</a>
-            <a id="show-terms" href="#" target="_blank" class="nav-link pr-3 pl-0">Quiero esta Aplicación</a>
+            <a href="https://axleyherrera.com/Main/contact?lang=es" target="_blank" class="nav-link pr-3 pl-0">Quiero esta Aplicación</a>
         </div>
     </div>
 </div>
