@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'Home::index');
+$routes->add('www.negociocitas.online', 'Home::index');
 
 /*
  * --------------------------------------------------------------------
