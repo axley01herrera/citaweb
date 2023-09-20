@@ -4,9 +4,7 @@
         <div class="alert-text">No hay servicios disponibles.</div>
     </div>
 <?php endif ?>
-
 <?php foreach ($services as $service) : ?>
-
     <div class="card card-custom mt-2">
         <div class="card-header">
             <div class="card-title">
@@ -40,8 +38,6 @@
             endif ?>
         </div>
     </div>
-
-
 <?php endforeach ?>
 
 <script>
@@ -84,7 +80,7 @@
             }
         });
 
-        $('.delete').on('click', function() { // ACTION DELETE
+        $('.delete').on('click', function() {
             $.ajax({
                 type: "post",
                 url: "<?php echo base_url('Admin/deleteService'); ?>",

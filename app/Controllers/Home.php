@@ -31,12 +31,10 @@ class Home extends BaseController
     public function index()
     {
         $data = array();
-        # data
         $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
         $data['confirmation'] = $this->request->getPostGet('confirmation');
         $data['sessionExpired'] = $this->request->getPostGet('sessionExpired');
         $data['services'] = $this->objMainModel->objData('t_service');
-        # page
         $data['title'] = 'Inicio';
         $data['page'] = 'home/mainHome';
 
@@ -254,5 +252,13 @@ class Home extends BaseController
         }
 
         return json_encode($result);
+    }
+
+    public function showServiceDescription()
+    {
+        $data = array();
+        $data['service'] = $this->objMainModel->objData('t_service', 'id', $this->request->getPost('id'))[0];
+
+        return view('modals/serviceDetail', $data);
     }
 }

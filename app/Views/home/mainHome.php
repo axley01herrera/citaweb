@@ -14,7 +14,7 @@ else
                             <div class="symbol-label" style="<?php echo $urlImage; ?>"></div>
                             <i class="symbol-badge symbol-badge-bottom bg-success"></i>
                         </div>
-                        <h4 class="font-weight-bold my-2"><?php echo $config->name . ' ' . $config->lastName; ?></h4>
+                        <h4 class="font-weight-bold my-2" title="<?php echo $config->profession; ?>"><?php echo $config->name . ' ' . $config->lastName; ?></h4>
                         <div class="text-muted mb-2"><a href="<?php echo base_url('Home/loginAdmin'); ?>"><?php echo $config->companyName; ?></a></div>
                     </div>
                     <div class="mt-5">
@@ -233,13 +233,24 @@ else
                             <div class="row">
                                 <?php foreach ($services as $service) : ?>
                                     <div class="col-12 col-md-3 col-lg-4 mt-5">
-                                        <h5><?php echo $service->title; ?></h5>
-                                        <?php
-                                        if (!empty($service->price))
-                                            echo '€' . number_format($service->price, 2, ".", ',');
-                                        else
-                                            echo 'Gratis';
-                                        ?>
+                                        <div class="d-flex align-items-center">
+                                            <span class="bullet bullet-bar bg-success align-self-stretch"></span>
+                                            <label class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                <input type="checkbox" name="select" value="1">
+                                                <span></span>
+                                            </label>
+                                            <div class="d-flex flex-column flex-grow-1">
+                                                <a data-id="<?php echo $service->id; ?>" href="#" class="service text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1"><?php echo $service->title; ?></a>
+                                                <span class="text-muted font-weight-bold">
+                                                    <?php
+                                                    if (!empty($service->price))
+                                                        echo '€' . number_format($service->price, 2, ".", ',');
+                                                    else
+                                                        echo 'Gratis';
+                                                    ?>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 <?php endforeach ?>
                             </div>
@@ -283,5 +294,25 @@ else
         let encodedAddress = encodeURIComponent(address);
         let mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodedAddress;
         window.open(mapUrl, '_blank');
+    });
+
+    $('.service').on('click', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        $.ajax({
+            type: "post",
+            url: "<?php echo base_url('Home/showServiceDescription');?>",
+            data: {
+                'id': id
+            },
+            dataType: "html",
+            success: function (response) {
+                $('#main-modal').html(response);
+            },
+            error: function (error) {
+                
+            }
+        });
+
     });
 </script>
