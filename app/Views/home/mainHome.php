@@ -289,7 +289,7 @@ else
     <div id="fb-customer-chat" class="fb-customerchat"></div>
     <script>
         var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "axley01herrera"); // Reemplaza con tu ID de página de Facebook
+        chatbox.setAttribute("page_id", "108460084806404"); // Reemplaza con tu ID de página de Facebook
         chatbox.setAttribute("attribution", "biz_inbox");
     </script>
     <script>
