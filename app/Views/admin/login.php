@@ -121,3 +121,15 @@
         });
     });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var formulario = document.getElementById("kt_login_signup_form");
+
+  formulario.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Evita que el formulario se envíe
+    }
+  });
+});
+</script>
