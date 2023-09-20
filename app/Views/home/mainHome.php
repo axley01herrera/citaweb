@@ -284,25 +284,23 @@ else
             </div>
         </div>
     </div>
-
-
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat"></div>
     <script>
         var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "axley01herrera");
+        chatbox.setAttribute("page_id", "axley01herrera"); // Reemplaza con tu ID de página de Facebook
         chatbox.setAttribute("attribution", "biz_inbox");
     </script>
     <script>
         window.fbAsyncInit = function() {
             FB.init({
-                appId: 'axley01herrera',
+                appId: 'axley01herrera', // Reemplaza con tu ID de aplicación de Facebook
                 xfbml: true,
-                version: 'v12.0'
+                version: 'v12.0' // Puedes especificar la versión de la API de Facebook que deseas utilizar
             });
         };
-        (function(d, s, id="axley01herrera") {
+        (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s);
@@ -311,11 +309,6 @@ else
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-
-
-
-
-
 </div>
 
 
