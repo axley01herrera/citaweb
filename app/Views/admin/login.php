@@ -1,8 +1,8 @@
-<?php 
-    if(empty($config->avatar))
-        $urlImage = 'background-image: url("'.base_url('assets/media/users/blank.png').'")';
-    else
-        $urlImage = 'background-image: url(data:image/png;base64,'.base64_encode($config->avatar).')';
+<?php
+if (empty($config->avatar))
+    $urlImage = 'background-image: url("' . base_url('assets/media/users/blank.png') . '")';
+else
+    $urlImage = 'background-image: url(data:image/png;base64,' . base64_encode($config->avatar) . ')';
 ?>
 <link href="<?php echo base_url('assets/css/pages/login/classic/login-4.css'); ?>" rel="stylesheet" type="text/css" />
 <script src="<?php echo base_url('assets/js/pages/custom/login/login-general.js'); ?>"></script>
@@ -30,7 +30,7 @@
                     </div>
                     <form class="form" id="kt_login_signup_form">
                         <div class="form-group mb-5">
-                            <input id="txt-password" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Clave de Acceso" />
+                            <input id="txt-password" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Clave de Acceso" autofocus />
                         </div>
                         <div class="form-group d-flex flex-wrap flex-center mt-10">
                             <button type="button" id="btn-login" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Entrar</button>
@@ -49,6 +49,9 @@
 <script>
     $(document).ready(function() {
         $('#kt_login_signup').trigger('click');
+        setTimeout(() => {
+            $('#txt-password').focus();
+        }, "1500");
 
         $('#btn-login').on('click', function(e) {
             e.preventDefault();
@@ -123,13 +126,14 @@
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  var formulario = document.getElementById("kt_login_signup_form");
+    document.addEventListener("DOMContentLoaded", function() {
+        var formulario = document.getElementById("kt_login_signup_form");
 
-  formulario.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-      e.preventDefault(); // Evita que el formulario se envíe
-    }
-  });
-});
+        formulario.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // Evita que el formulario se envíe
+                $('#btn-login').trigger('click');
+            }
+        });
+    });
 </script>

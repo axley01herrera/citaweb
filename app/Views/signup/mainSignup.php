@@ -49,11 +49,11 @@ else
                                 <label class="checkbox m-0 text-light">
                                     <input id="cbx-terms" type="checkbox" value="0" />
                                     <span></span>Estoy de acuerdo con
-                                    <a id="show-terms" href="#" class="font-weight-bold ml-1">Política de Privacidad</a>.
+                                    <a id="show-terms" href="#" class="font-weight-bold ml-1">Política de Privacidad</a>
                                 </label>
                             </div>
                             <div id="msg-term" class="fv-plugins-message-container" hidden>
-                                <div data-field="agree" data-validator="notEmpty" class="fv-help-block">Debe aceptar la Política de Privacidad.</div>
+                                <div data-field="agree" data-validator="notEmpty" class="fv-help-block">Debe aceptar la Política de Privacidad</div>
                             </div>
                         </div>
                         <div class="form-group d-flex flex-wrap flex-center mt-10">
@@ -73,6 +73,11 @@ else
 <script>
     $(document).ready(function() {
         $('#kt_login_signup').trigger('click');
+
+        setTimeout(() => {
+            $('#txt-name').focus();
+        }, "1500");
+
         $('#btn-signup').on('click', function(e) {
             e.preventDefault();
             let result = checkRequiredValues();
@@ -189,6 +194,19 @@ else
             } else {
                 $('#msg-term').removeAttr('hidden');
                 $(this).val('0');
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var formulario = document.getElementById("kt_login_signup_form");
+
+        formulario.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // Evita que el formulario se envíe
+                $('#btn-signup').trigger('click');
             }
         });
     });

@@ -30,7 +30,7 @@ else
                     </div>
                     <form class="form" id="kt_login_signup_form">
                         <div class="form-group mb-5">
-                            <input id="txt-email" class="form-control h-auto form-control-solid py-4 px-8 required email" type="text" placeholder="Correo Electrónico" autocomplete="on" />
+                            <input id="txt-email" class="form-control h-auto form-control-solid py-4 px-8 required email" type="text" placeholder="Correo Electrónico" autocomplete="on" autofocus />
                         </div>
                         <div class="form-group mb-5">
                             <input id="txt-password" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Contraseña" />
@@ -60,6 +60,11 @@ else
 <script>
     $(document).ready(function() {
         $('#kt_login_signup').trigger('click');
+
+        setTimeout(() => {
+            $('#txt-email').focus();
+        }, "1500");
+
         if (localStorage.remember != undefined && localStorage.remember != '') {
             $('#cbx-remember').trigger('click');
             $('#cbx-remember').attr('data-value', '1');
@@ -122,6 +127,8 @@ else
                         showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                     }
                 });
+            } else {
+                showAlert('error', 'Lo Sentimos', 'Rectifique sus Credenciales');
             }
         });
 
@@ -178,5 +185,18 @@ else
             }
         });
 
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var formulario = document.getElementById("kt_login_signup_form");
+
+        formulario.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // Evita que el formulario se envíe
+                $('#btn-login').trigger('click');
+            }
+        });
     });
 </script>
