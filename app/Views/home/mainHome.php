@@ -295,17 +295,21 @@ else
     <script>
         window.fbAsyncInit = function() {
             FB.init({
-                appId: 'axley01herrera', // Reemplaza con tu ID de aplicación de Facebook
+                appId: '683670557152491',
                 xfbml: true,
-                version: 'v18.0' // Puedes especificar la versión de la API de Facebook que deseas utilizar
+                version: 'v18.0'
             });
+            FB.AppEvents.logPageView();
         };
+
         (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
+            if (d.getElementById(id)) {
+                return;
+            }
             js = d.createElement(s);
             js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
