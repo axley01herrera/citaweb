@@ -254,10 +254,14 @@ else
                                 La gestión eficiente de las citas es esencial para el éxito de tu negocio. Una herramienta personalizada y totalmente adaptada a tus necesidades puede marcar la diferencia en tu eficacia.
                                 Me complace presentarle una solución que ofrece automatización completa de las reservas por parte de tus clientes y una presencia en línea. Esta aplicación le brinda la capacidad de llevar a cabo reservas de manera eficiente, garantizando un control seguro y digital de las citas de tus clientes.
                             </p>
-
                             <p>
                                 Ejemplo de negocio que ya está experimentando el potencial de esta aplicación, <a target="_blank" href="https://alcaponebarbershop.com/">Alcapone Barber Shop</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
                             </p>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a target="_blank" href="https://axleyherrera.com/Main/contact?lang=es" class="btn btn-success btn-shadow-hover font-weight-bolder py-3">Quiero esta Aplicación</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -288,18 +292,18 @@ else
     });
 
     $('#show-terms').on('click', function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "post",
-                url: "<?php echo base_url('Home/showTerms'); ?>",
-                data: "",
-                dataType: "html",
-                success: function(response) {
-                    $('#main-modal').html(response);
-                },
-                error: function() {
-                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
-                }
-            });
+        e.preventDefault();
+        $.ajax({
+            type: "post",
+            url: "<?php echo base_url('Home/showTerms'); ?>",
+            data: "",
+            dataType: "html",
+            success: function(response) {
+                $('#main-modal').html(response);
+            },
+            error: function() {
+                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
+            }
         });
+    });
 </script>
