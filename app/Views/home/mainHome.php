@@ -70,6 +70,11 @@ else
                         <br>
                         <span class="text-muted"><?php echo $config->bussinessCity . ', ' . $config->bussinessState . ', ' . $config->bussinessPostalCode . ', ' . $config->bussinessCountry; ?></span>
                     </div>
+                    <div class="row">
+                        <div class="col-12 text-center mt-5">
+                            <a href="https://axleyherrera.com/Main/contact?lang=es">2023© Axley Herrera Vázquez</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -269,18 +274,7 @@ else
         </div>
     </div>
 </div>
-<div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
-    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-        <div class="text-dark order-2 order-md-1">
-            <span class="text-muted font-weight-bold mr-2">2023© Axley Herrera Vázquez</span>
-        </div>
-        <div class="nav nav-dark order-1 order-md-2">
-            <a href="https://axleyherrera.com/" target="_blank" class="nav-link pr-3 pl-0">Quién Soy</a>
-            <a id="show-terms" href="#" target="_blank" class="nav-link pr-3 pl-0">Política de Privacidad</a>
-            <a href="https://axleyherrera.com/Main/contact?lang=es" target="_blank" class="nav-link pr-3 pl-0">Quiero esta Aplicación</a>
-        </div>
-    </div>
-</div>
+
 <script>
     $('#open-maps').on('click', function(e) {
         e.preventDefault();
@@ -289,21 +283,5 @@ else
         let encodedAddress = encodeURIComponent(address);
         let mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodedAddress;
         window.open(mapUrl, '_blank');
-    });
-
-    $('#show-terms').on('click', function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "post",
-            url: "<?php echo base_url('Home/showTerms'); ?>",
-            data: "",
-            dataType: "html",
-            success: function(response) {
-                $('#main-modal').html(response);
-            },
-            error: function() {
-                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
-            }
-        });
     });
 </script>
