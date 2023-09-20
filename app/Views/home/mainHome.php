@@ -297,7 +297,7 @@ else
     window.fbAsyncInit = function() {
         FB.init({
             xfbml: true,
-            version: 'API-VERSION'
+            version: 'v12.0'
         });
     };
     (function(d, s, id) {
