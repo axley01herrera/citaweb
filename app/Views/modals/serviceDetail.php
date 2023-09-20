@@ -41,8 +41,10 @@
     </div>
 </div>
 <script>
-    $('#modal').modal('show');
-    $('#modal').on('hidden.bs.modal', function(event) {
-        $('#main-modal').html('');
+    $(document).ready(function () {
+        $('#modal').modal('show');
+        $('#modal').on('hidden.bs.modal', function(event) {
+            $('#main-modal').html('');
+        });
     });
 </script>
