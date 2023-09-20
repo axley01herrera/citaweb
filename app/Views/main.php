@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- App Icon -->
-    <link href="<?php echo base_url('assets/media/logos/favicon.ico'); ?>" rel="shortcut icon" />
+    <link href="<?php echo base_url('public/assets/media/logos/favicon.ico'); ?>" rel="shortcut icon" />
 
     <!-- Global CSS -->
-    <link href="<?php echo base_url('assets/plugins/global/plugins.bundle.css'); ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/plugins/custom/prismjs/prismjs.bundle.css'); ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/css/style.bundle.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('public/assets/plugins/global/plugins.bundle.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('public/assets/plugins/custom/prismjs/prismjs.bundle.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('public/assets/css/style.bundle.css'); ?>" rel="stylesheet" type="text/css" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/datatable/dataTables.bootstrap5.min.css'); ?>" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/timepicker/timepicker.css'); ?>" />
 
@@ -80,14 +80,14 @@
             "font-family": "Poppins"
         };
     </script>
-    <script src="<?php echo base_url('assets/plugins/global/plugins.bundle.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/plugins/custom/prismjs/prismjs.bundle.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/scripts.bundle.js'); ?>"></script>
-    <script src='<?php echo base_url('assets/fullcalendar/dist/index.global.js'); ?>'></script>
-    <script src='<?php echo base_url('assets/fullcalendar/packages/core/locales/es.global.js'); ?>'></script>
-    <script src="<?php echo base_url('assets/datatable/jquery.dataTables.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/datatable/dataTables.bootstrap5.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/timepicker/timepicker.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/plugins/global/plugins.bundle.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/plugins/custom/prismjs/prismjs.bundle.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/js/scripts.bundle.js'); ?>"></script>
+    <script src='<?php echo base_url('public/assets/fullcalendar/dist/index.global.js'); ?>'></script>
+    <script src='<?php echo base_url('public/assets/fullcalendar/packages/core/locales/es.global.js'); ?>'></script>
+    <script src="<?php echo base_url('public/assets/datatable/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/datatable/dataTables.bootstrap5.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/timepicker/timepicker.js'); ?>"></script>
 </head>
 
 <body style="background-color: #181c32;">
