@@ -30,7 +30,7 @@ else
                     </div>
                     <form class="form" id="kt_login_signup_form">
                         <div class="form-group mb-5">
-                            <input id="txt-password" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Clave de Acceso" autofocus />
+                            <input id="txt-password" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Clave de Acceso" />
                         </div>
                         <div class="form-group d-flex flex-wrap flex-center mt-10">
                             <button type="button" id="btn-login" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Entrar</button>

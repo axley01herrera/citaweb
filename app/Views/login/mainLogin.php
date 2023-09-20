@@ -30,7 +30,7 @@ else
                     </div>
                     <form class="form" id="kt_login_signup_form">
                         <div class="form-group mb-5">
-                            <input id="txt-email" class="form-control h-auto form-control-solid py-4 px-8 required email" type="text" placeholder="Correo Electrónico" autocomplete="on" autofocus />
+                            <input id="txt-email" class="form-control h-auto form-control-solid py-4 px-8 required email" type="text" placeholder="Correo Electrónico" autocomplete="on" />
                         </div>
                         <div class="form-group mb-5">
                             <input id="txt-password" class="form-control h-auto form-control-solid py-4 px-8 required" type="password" placeholder="Contraseña" />
