@@ -284,37 +284,7 @@ else
             </div>
         </div>
     </div>
-    <!-- Messenger Chat Plugin Code -->
-    <div id="fb-root"></div>
-    <div id="fb-customer-chat" class="fb-customerchat"></div>
-    <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "108460084806404"); // Reemplaza con tu ID de página de Facebook
-        chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId: '683670557152491',
-                xfbml: true,
-                version: 'v18.0'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
 </div>
-
 
 <script>
     $('#open-maps').on('click', function(e) {
