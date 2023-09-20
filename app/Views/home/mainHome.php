@@ -284,14 +284,21 @@ else
             </div>
         </div>
     </div>
+
+
+    <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "axley01herrera");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
     <script>
         window.fbAsyncInit = function() {
             FB.init({
-                appId: 'axley01herrera', // Reemplaza con el ID de tu aplicación de Facebook
-                autoLogAppEvents: true,
                 xfbml: true,
-                version: 'v12.0' // Puedes especificar la versión de la API de Facebook que deseas utilizar
+                version: 'v12.0'
             });
         };
         (function(d, s, id) {
@@ -299,13 +306,15 @@ else
             if (d.getElementById(id)) return;
             js = d.createElement(s);
             js.id = id;
-            js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <!-- Agrega el código del Plugin de Chat en una ubicación de tu elección -->
-    <div class="fb-customerchat" attribution="install_email" page_id="axley01herrera" theme_color="#0084ff"></div>
+
+
+
+
 </div>
 
 
