@@ -72,7 +72,7 @@ else
                     </div>
                     <div class="row">
                         <div class="col-12 text-center mt-5">
-                            <a href="https://axleyherrera.com/Main/contact?lang=es">2023© Axley Herrera Vázquez</a>
+                            <a target="_blank" href="https://axleyherrera.com/Main/contact?lang=es">2023© Axley Herrera Vázquez</a>
                         </div>
                     </div>
                 </div>
