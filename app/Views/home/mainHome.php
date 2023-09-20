@@ -44,17 +44,17 @@ else
                     <div class="mt-10 text-center">
                         <?php if (!empty($config->facebookLink)) : ?>
                             <a href="<?php echo $config->facebookLink; ?>" target="_blank" class="btn btn-icon btn-circle btn-light-facebook mr-2">
-                                <i class="socicon-facebook"></i>
+                                <i class="fab fa-facebook-f"></i>
                             </a>
                         <?php endif ?>
                         <?php if (!empty($config->instagramLink)) : ?>
                             <a href="<?php echo $config->instagramLink; ?>" target="_blank" class="btn btn-icon btn-circle btn-light-instagram mr-2">
-                                <i class="socicon-instagram"></i>
+                                <i class="fab fa-instagram"></i>
                             </a>
                         <?php endif ?>
                         <?php if (!empty($config->bussinessAddress)) : ?>
                             <a id="open-maps" href="#" class="btn btn-icon btn-circle btn-light-primary">
-                                <i class="socicon-periscope"></i>
+                                <i class="fab fa-periscope"></i>
                             </a>
                         <?php endif ?>
                     </div>
