@@ -285,6 +285,30 @@ else
         </div>
     </div>
 </div>
+<!-- Messenger Chat Plugin Code -->
+<div id="fb-root"></div>
+<div id="fb-customer-chat" class="fb-customerchat"></div>
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "axley01herrera");
+    chatbox.setAttribute("attribution", "biz_inbox");
+</script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'API-VERSION'
+        });
+    };
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <script>
     $('#open-maps').on('click', function(e) {
@@ -301,16 +325,16 @@ else
         let id = $(this).attr('data-id');
         $.ajax({
             type: "post",
-            url: "<?php echo base_url('Home/showServiceDescription');?>",
+            url: "<?php echo base_url('Home/showServiceDescription'); ?>",
             data: {
                 'id': id
             },
             dataType: "html",
-            success: function (response) {
+            success: function(response) {
                 $('#main-modal').html(response);
             },
-            error: function (error) {
-                
+            error: function(error) {
+
             }
         });
 
