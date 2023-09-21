@@ -153,7 +153,7 @@
             e.preventDefault();
             Swal.fire({
                 title: 'Estás Seguro',
-                text: "Esta acción no es reversible y se borraran todos su datos",
+                text: "Esta acción no es reversible y se borran todos su datos",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
