@@ -232,4 +232,21 @@ class MainModel extends Model
 
         return $query->get()->getResult();
     }
+
+    public function deleteCustomerProfile($id)
+    {
+        $this->db->table('t_appointment')
+        ->where('customerID', $id)
+        ->delete();
+
+        $this->db->table('t_customer')
+        ->where('id', $id)
+        ->delete();
+
+        $result = array();
+        $result['error'] = 0;
+        $result['msg'] = 'success';
+
+        return $result;
+    }
 }

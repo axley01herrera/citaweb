@@ -407,4 +407,9 @@ class Customer extends BaseController
 
         return json_encode($this->objMainModel->objUpdate('t_customer', $data, $this->request->getPost('customerID')));
     }
+
+    public function deleteProfile()
+    {
+        return json_encode($this->objMainModel->deleteCustomerProfile($this->objSession->get('user')->id));
+    }
 }

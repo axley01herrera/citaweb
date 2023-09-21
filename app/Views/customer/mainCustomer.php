@@ -17,7 +17,15 @@
                                             </span>
                                             <span class="navi-text">Cambiar mi Contraseña</span>
                                         </a>
-                                    </li> 
+                                    </li>
+                                    <li class="navi-item">
+                                        <a id="delete-profile" href="#" class="navi-link">
+                                            <span class="navi-icon">
+                                                <i class="flaticon2-trash"></i>
+                                            </span>
+                                            <span class="navi-text">Eliminar mi Perfil</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -81,10 +89,10 @@
     function getCustomerAppointments() {
         $.ajax({
             type: "post",
-            url: "<?php echo base_url('Customer/getMainCustomerAppointments')?>",
+            url: "<?php echo base_url('Customer/getMainCustomerAppointments') ?>",
             data: "",
             dataType: "html",
-            success: function (response) {
+            success: function(response) {
                 $('#main-customer-appointments').html(response);
             }
         });
@@ -107,23 +115,23 @@
             });
         });
 
-        $('.change-password').on('click', function (e) {
+        $('.change-password').on('click', function(e) {
             e.preventDefault();
             $.ajax({
                 type: "post",
                 url: "<?php echo base_url('Customer/changePassword'); ?>",
                 data: "",
                 dataType: "html",
-                success: function (response) {
+                success: function(response) {
                     $('#main-modal').html(response);
                 },
-                error: function (error) {
+                error: function(error) {
                     showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                 }
             });
         });
 
-        $('.edit-customer-profile').on('click', function (e) {
+        $('.edit-customer-profile').on('click', function(e) {
             e.preventDefault();
             $.ajax({
                 type: "post",
@@ -132,12 +140,47 @@
                     'customerID': '<?php echo $customer->id; ?>'
                 },
                 dataType: "html",
-                success: function (response) {
+                success: function(response) {
                     $('#main-modal').html(response);
                 },
-                error: function (error) {
+                error: function(error) {
                     showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
                 }
+            });
+        });
+
+        $('#delete-profile').on('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Estás Seguro',
+                text: "Esta acción no es reversible y se borraran todos su datos",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Eliminar',
+                customClass: {
+                    confirmButton: 'delete'
+                }
+            });
+
+            $('.delete').on('click', function() {
+                $.ajax({
+                    type: "post",
+                    url: "<?php echo base_url('Customer/deleteProfile'); ?>",
+                    data: "",
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.error == 0) {
+                            window.location.href = "<?php echo base_url('Home/index?sessionExpired=true'); ?>";
+                        } else
+                            showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
+                    },
+                    error: function(error) {
+                        showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
+                    }
+                });
+
             });
         });
     });
