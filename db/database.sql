@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `t_appointment` (
   `service` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `description` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) 
+)
 
 DROP TABLE IF EXISTS `t_config`;
 CREATE TABLE IF NOT EXISTS `t_config` (
@@ -89,7 +89,7 @@ DROP TABLE IF EXISTS `t_service`;
 CREATE TABLE IF NOT EXISTS `t_service` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-  `price` float NOT NULL,
+  `price` float DEFAULT NULL,
   `description` varchar(999) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
