@@ -54,14 +54,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPUser = 'info@grupoahvsolucionesinformaticas.es';
+    public $SMTPUser = '';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = '@NICOLE6062017hOSTINGER';
+    public $SMTPPass = '';
 
     /**
      * SMTP Port
