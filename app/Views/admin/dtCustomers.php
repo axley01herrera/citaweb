@@ -3,13 +3,13 @@
         <div class="card-body">
             <table id="dt-customer" class="table dataTables_wrapper dt-bootstrap4 no-footer">
                 <thead>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo Electrónico</th>
-                    <th>Teléfono</th>
-                    <th class="text-center">Correo Verificado</th>
-                    <th>Inactivo / Activo</th>
-                    <th class="text-center">Acciones</th>
+                    <th><strong>Nombre</strong></th>
+                    <th><strong>Apellidos</strong></th>
+                    <th><strong>Correo Electrónico</strong></th>
+                    <th><strong>Teléfono</strong></th>
+                    <th class="text-center"><strong>Correo Verificado</strong></th>
+                    <th><strong>Inactivo / Activo</strong></th>
+                    <th class="text-center"><strong>Acciones</strong></th>
                 </thead>
                 <tbody>
                     <?php foreach ($customers as $customer) : ?>
@@ -48,11 +48,12 @@
 
 <script>
     var dtCustomers = new DataTable('#dt-customer', {
-        stateSave: true,
-        dom: 'RfrtlpiB',
+        responsive: true,
+        bAutoWidth: true,
+        pageLength: 10,
         lengthMenu: [
-            [5, 10, 25, 50, 100, -1],
-            [5, 10, 25, 50, 100, "Todos"]
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'Todos']
         ],
         language: {
             url: '<?php echo base_url('assets/datatable/es.json'); ?>'
