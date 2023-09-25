@@ -71,7 +71,7 @@ class MainModel extends Model
     {
         $query = $this->db->table($table);
 
-        if(!empty($field))
+        if (!empty($field))
             $query->where($field, $value);
 
         return $query->get()->getResult();
@@ -109,7 +109,7 @@ class MainModel extends Model
             $result['error'] = 1;
             $result['msg'] = 'fail upload file';
         }
-            
+
         return $result;
     }
 
@@ -158,7 +158,6 @@ class MainModel extends Model
             $result['error'] = 0;
             $result['msg'] = 'success';
             $result['data'][0]['role'] = 'admin';
-
         } else {
             $result['error'] = 1;
             $result['msg'] = 'invalid password';
@@ -178,7 +177,7 @@ class MainModel extends Model
             ->where('date >=', $start)
             ->where('date <=', $end);
 
-        if(!empty($customerID))
+        if (!empty($customerID))
             $query->where('customerID', $customerID);
 
         $data = $query->get()->getResult();
@@ -191,11 +190,11 @@ class MainModel extends Model
             $events[$i]['title'] = $data[$i]->title . ' ' . date('g:i a', strtotime($data[$i]->time));
             $events[$i]['start'] = $data[$i]->date . 'T' . $data[$i]->time;
             $events[$i]['end'] = $data[$i]->date . 'T' . $data[$i]->time;
-            if(!empty($data[$i]->service))
+            if (!empty($data[$i]->service))
                 $events[$i]['service'] = $data[$i]->service;
-            else 
+            else
                 $events[$i]['service'] = 'No seleccionado';
-            if(!empty($data[$i]->description))
+            if (!empty($data[$i]->description))
                 $events[$i]['description'] = $data[$i]->description;
             else
                 $events[$i]['description'] = 'Sin descripción';
@@ -206,7 +205,7 @@ class MainModel extends Model
 
     public function getMainCustomerAppointments($customerID)
     {
-        
+
         $query = $this->db->table('t_appointment')
             ->select('name as title, t_appointment.id as id, customerID, date, time, service, description')
             ->join('t_customer', 't_customer.id = t_appointment.customerID')
@@ -228,7 +227,7 @@ class MainModel extends Model
     public function getActiveCustomers()
     {
         $query = $this->db->table('t_customer')
-        ->where('status', 1);
+            ->where('status', 1);
 
         return $query->get()->getResult();
     }
@@ -236,17 +235,27 @@ class MainModel extends Model
     public function deleteCustomerProfile($id)
     {
         $this->db->table('t_appointment')
-        ->where('customerID', $id)
-        ->delete();
+            ->where('customerID', $id)
+            ->delete();
 
         $this->db->table('t_customer')
-        ->where('id', $id)
-        ->delete();
+            ->where('id', $id)
+            ->delete();
 
         $result = array();
         $result['error'] = 0;
         $result['msg'] = 'success';
 
         return $result;
+    }
+
+    public function dtBasket($basketID)
+    {
+        $query = $this->db->table('t_basket_service tbs')
+            ->select('tbs.id AS id, tbs.amount AS amount,ts.title AS title')
+            ->join('t_service ts', 'ts.id = tbs.fk_service')
+            ->where('fk_basket', $basketID);
+
+        return $query->get()->getResult();
     }
 }

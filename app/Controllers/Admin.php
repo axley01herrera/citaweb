@@ -3,17 +3,24 @@
 namespace App\Controllers;
 
 use App\Models\MainModel;
+use App\Models\ReportModel;
+use App\Models\DataTablesModel;
+use CodeIgniter\HTTP\Response;
 
 class Admin extends BaseController
 {
     protected $objSession;
     protected $objMainModel;
+    protected $objReportModel;
+    protected $objDataTablesModel;
     protected $objEmail;
 
     function  __construct()
     {
         $this->objSession = session();
         $this->objMainModel = new MainModel;
+        $this->objReportModel = new ReportModel;
+        $this->objDataTablesModel = new DataTablesModel;
 
         $emailConfig = array();
         $emailConfig['protocol'] = EMAIL_PROTOCOL;
@@ -51,10 +58,12 @@ class Admin extends BaseController
 
         $data = array();
         $data['companyName'] = htmlspecialchars(trim($this->request->getPost('companyName')));
+        $data['cif'] = htmlspecialchars(trim($this->request->getPost('cif')));
         $data['name'] = htmlspecialchars(trim($this->request->getPost('name')));
         $data['lastName'] = htmlspecialchars(trim($this->request->getPost('lastName')));
         $data['profession'] = htmlspecialchars(trim($this->request->getPost('profession')));
         $data['phone'] = htmlspecialchars(trim($this->request->getPost('phone')));
+        $data['phone2'] = htmlspecialchars(trim($this->request->getPost('phone2')));
         $data['email'] = htmlspecialchars(trim($this->request->getPost('email')));
         $data['facebookLink'] = htmlspecialchars(trim($this->request->getPost('facebook')));
         $data['instagramLink'] = htmlspecialchars(trim($this->request->getPost('instagram')));
@@ -219,7 +228,16 @@ class Admin extends BaseController
             return json_encode($result);
         }
 
-        return json_encode($this->objMainModel->objDelete('t_service', $this->request->getPost('id')));
+        $result = $this->objMainModel->objData('t_basket_service', 'fk_service', $this->request->getPost('id'));
+
+        if(empty($result)) {
+            return json_encode($this->objMainModel->objDelete('t_service', $this->request->getPost('id')));
+        } else {
+            $result = array();
+            $result['error'] = 3;
+            return json_encode($result);
+        }
+
     }
 
     public function calendar()
@@ -306,6 +324,25 @@ class Admin extends BaseController
             case 'customers':
                 return view('admin/tabCustomers');
                 break;
+            case 'tpv':
+                $data = array();
+                $data['services'] = $this->objMainModel->objData('t_service');
+                $basket = $this->objMainModel->objData('t_basket', 'status', 1);
+                if (empty($basket)) {
+                    $insert = array();
+                    $insert['status'] = 1;
+                    $result = $this->objMainModel->objCreate('t_basket', $insert);
+                    $data['basketID'] = $result['id'];
+                } else
+                    $data['basketID'] = $basket[0]->id;
+                return view('admin/tabTpv', $data);
+                break;
+            case 'statistics':
+                return view('admin/tabStatistics');
+                break;
+            case 'report':
+                return view('admin/tabReport');
+                break;
         }
     }
 
@@ -358,5 +395,187 @@ class Admin extends BaseController
         }
 
         return json_encode($result);
+    }
+
+    public function dtBasket()
+    {
+        $data = array();
+        $data['basket'] = $this->objMainModel->dtBasket($this->request->getPost('basketID'));
+        return view('admin/mainBasket', $data);
+    }
+
+    public function addServiceToBasket()
+    {
+        $result = $this->objMainModel->objData('t_service', 'id', $this->request->getPost('serviceID'));
+        $data = array();
+        $data['fk_basket'] = $this->request->getPost('basketID');
+        $data['fk_service'] = $this->request->getPost('serviceID');
+        $data['amount'] = $result[0]->price;
+        $result = $this->objMainModel->objCreate('t_basket_service', $data);
+        return json_encode($result);
+    }
+
+    public function removeServiceFromBasket()
+    {
+        return json_encode($this->objMainModel->objDelete('t_basket_service', $this->request->getPost('id')));
+    }
+
+    public function modalPayType()
+    {
+        if (empty($this->objSession->get('user')['role']))
+            return view('admin/sessionExpired');
+
+        $data = array();
+        $data['basketID'] = $this->request->getPost('basketID');
+
+        return view('admin/modalPayType', $data);
+    }
+
+    public function charge()
+    {
+        $basketID = $this->request->getPost('basketID');
+        $payType = $this->request->getPost('payType');
+
+        $data = array();
+        $data['status'] = 0;
+        $data['dateTime'] = date("Y-m-d H:i:s");
+        $data['date'] = date("Y-m-d");
+        $data['payType'] = (int) $payType;
+
+        $result = $this->objMainModel->objUpdate('t_basket', $data, $basketID);
+
+        return json_encode($result);
+    }
+
+    public function collectionDay()
+    {
+        $data = array();
+        $data['collectionDay'] = $this->objReportModel->collectionDay();
+        return view('admin/collectionDay', $data);
+    }
+
+    public function chartWeek()
+    {
+        $data = array();
+        $data['chartWeek'] = $this->objReportModel->chartWeek();
+        return view('admin/chartWeek', $data);
+    }
+
+    public function chartMont()
+    {
+        if (!empty($this->request->getPostGet('year')))
+            $year = $this->request->getPostGet('year');
+        else
+            $year = date('Y');
+
+        $data = array();
+        $data['chartMont'] = $this->objReportModel->chartMont($year);
+        $data['year'] = $year;
+        $data['currentYear'] = date('Y');
+
+        return view('admin/chartMont', $data);
+    }
+
+    public function dtProcessingHistory()
+    {
+        $dataTableRequest = $_REQUEST;
+
+        $params = array();
+        $params['draw'] = $dataTableRequest['draw'];
+        $params['start'] = $dataTableRequest['start'];
+        $params['length'] = $dataTableRequest['length'];
+        $params['search'] = $dataTableRequest['search']['value'];
+        $params['sortColumn'] = $dataTableRequest['order'][0]['column'];
+        $params['sortDir'] = $dataTableRequest['order'][0]['dir'];
+
+        $row = array();
+        $totalRecords = 0;
+
+        $result = $this->objDataTablesModel->dtHistory($params);
+
+        $totalRows = sizeof($result);
+
+        for ($i = 0; $i < $totalRows; $i++) {
+            $payType = '';
+
+            if ($result[$i]->payType == 1)
+                $payType = '<span class="badge badge-soft-success">Efectivo</span>';
+            elseif ($result[$i]->payType == 2)
+                $payType = '<span class="badge badge-soft-primary">Tarjeta</span>';
+
+            $btnPrint = '<button type="button" class="btn-print btn btn-sm btn-secondary" data-id="' . $result[$i]->basketID . '">Imprimir</button>';
+            $btnDelete = '<button type="button" class="btn-del btn btn-sm btn-danger" data-id="' . $result[$i]->basketID . '">Eliminar</button>';
+
+            $col = array();
+            $col['id'] = $result[$i]->basketID;
+            $col['date'] = $result[$i]->date;
+            $col['articles'] = $result[$i]->articles;
+            $col['payType'] = $payType;
+            $col['amount'] = '€ ' . number_format($result[$i]->amount, 2, ".", ',');
+            $col['action'] = $btnPrint . ' ' . $btnDelete;
+
+            $row[$i] =  $col;
+        }
+
+        if ($totalRows > 0) {
+            if (empty($params['search']))
+                $totalRecords = $this->objDataTablesModel->getTotalHistory();
+            else
+                $totalRecords = $totalRows;
+        }
+
+        $data = array();
+        $data['draw'] = $dataTableRequest['draw'];
+        $data['recordsTotal'] = intval($totalRecords);
+        $data['recordsFiltered'] = intval($totalRecords);
+        $data['data'] = $row;
+
+        return json_encode($data);
+    }
+
+    public function returnReportContent()
+    {
+        $data = array();
+        $data['dateStart'] = $this->request->getPost('dateStart');
+        $data['dateEnd'] = $this->request->getPost('dateEnd');
+
+        return view('report/content', $data);
+    }
+
+    public function getCollectionReport()
+    {
+        $dateStart = $this->request->getPost('dateStart');
+        $dateEnd = $this->request->getPost('dateEnd');
+
+        $result = $this->objReportModel->getCollectionReport($dateStart, $dateEnd);
+
+        $data = array();
+        $data['collectionDay'] = $result;
+
+        return view('report/collection', $data);
+
+    }
+
+    public function dtReport()
+    {
+        $dateStart = $this->request->getPost('dateStart');
+        $dateEnd = $this->request->getPost('dateEnd');
+        $results = $this->objReportModel->dtReport($dateStart, $dateEnd);
+        $rows = array();
+
+        foreach($results as $result) {
+            $col = array();
+            $col['date'] =  '<h5>'.date('d/m/Y', strtotime($result->date)).'</h5>';
+            $col['cash'] = '€ ' . number_format($result->cashAmount, 2, ".", ',');
+            $col['card'] = '€ ' . number_format($result->cardAmount, 2, ".", ',');
+            $col['total'] = '€ ' . number_format($result->totalAmount, 2, ".", ',');
+
+            $rows[] = $col;
+        }
+
+        $data = array();
+        $data['dtReport'] = $rows;
+
+        return view('report/dtReport', $data);
     }
 }

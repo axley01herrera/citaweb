@@ -18,6 +18,20 @@
     <link href="<?php echo base_url('assets/css/style.bundle.css'); ?>" rel="stylesheet" type="text/css" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/datatable/dataTables.bootstrap5.min.css'); ?>" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/timepicker/timepicker.css'); ?>" />
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/apexcharts/dist/apexcharts.css'); ?>" />
+    
+    <style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+
+        table.dataTable td,
+        table.dataTable th {
+            vertical-align: middle;
+        }
+    </style>
 
     <!-- Global JS -->
     <script>
@@ -91,6 +105,7 @@
     <script src="<?php echo base_url('assets/datatable/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/datatable/dataTables.bootstrap5.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/timepicker/timepicker.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/apexcharts/dist/apexcharts.min.js'); ?>"></script>
 </head>
 
 <body style="background-color: #181c32;">

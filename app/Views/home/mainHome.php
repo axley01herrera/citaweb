@@ -8,8 +8,8 @@ else
     <div class="row">
         <div class="col-12 col-lg-3 mt-5">
             <div class="card card-custom">
-                <div class="card-body pt-15">
-                    <div class="text-center mb-10">
+                <div class="card-body pt-5">
+                    <div class="text-center mb-5">
                         <div class="symbol symbol-60 symbol-circle symbol-xl-90">
                             <div class="symbol-label" style="<?php echo $urlImage; ?>"></div>
                             <i class="symbol-badge symbol-badge-bottom bg-success"></i>
@@ -17,18 +17,24 @@ else
                         <h4 class="font-weight-bold my-2" title="<?php echo $config->profession; ?>"><?php echo $config->name . ' ' . $config->lastName; ?></h4>
                         <div class="text-muted mb-2"><a href="<?php echo base_url('Home/loginAdmin'); ?>"><?php echo $config->companyName; ?></a></div>
                     </div>
-                    <div class="mt-5">
+                    <div class="mt-2">
                         <span class="font-weight-bold mr-2">Correo Electrónico</span>
                         <br>
                         <a href="mailto:<?php echo $config->email; ?>" class="text-muted text-hover-primary"><?php echo $config->email; ?></a>
                         <br><br>
-                        <span class="font-weight-bold mr-2">Teléfono</span>
+                        <span class="font-weight-bold mr-2">Teléfono Móvil</span>
                         <br>
                         <a href="tel:<?php echo str_replace(' ', '', $config->phone); ?>" class="text-muted text-hover-primary"><?php echo $config->phone; ?></a>
+                        <?php if (!empty($config->phone2)) : ?>
+                            <br><br>
+                            <span class="font-weight-bold mr-2">Teléfono Fijo</span>
+                            <br>
+                            <a href="tel:<?php echo str_replace(' ', '', $config->phone2); ?>" class="text-muted text-hover-primary"><?php echo $config->phone2; ?></a>
+                        <?php endif ?>
                     </div>
-                    <div class="pb-6 mt-5">Bienvenido a mi perfil profesional en línea, te invito a registrarte para que reserves tus citas aquí</div>
+                    <div class="pb-6 mt-2">Bienvenido a mi perfil profesional en línea, te invito a registrarte para que reserves tus citas aquí</div>
                     <a id="btn-registration" href="<?php echo base_url('Home/signup'); ?>" class="btn btn-light-success font-weight-bold py-3 px-6 mb-2 text-center btn-block">Regístrate</a>
-                    <div class="text-center mt-10">
+                    <div class="text-center mt-5">
                         <h3 class="card-title font-weight-bolder">Ya eres cliente</h3>
                         <p class="text-center font-weight-normal font-size-lg">Inicia sesión para gestionar tus citas</p>
                     </div>
@@ -235,10 +241,12 @@ else
                                     <div class="col-12 col-md-3 col-lg-4 mt-5">
                                         <div class="d-flex align-items-center">
                                             <span class="bullet bullet-bar bg-success align-self-stretch"></span>
-                                            <label class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4">
-                                                <input type="checkbox" name="select" value="1">
-                                                <span></span>
-                                            </label>
+                                            <a data-id="<?php echo $service->id; ?>" href="#" class="service text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1">
+                                                <label class="checkbox checkbox-lg checkbox-light-success checkbox-inline flex-shrink-0 m-0 mx-4">
+                                                    <input type="checkbox" name="select" value="1" checked disabled>
+                                                    <span></span>
+                                                </label>
+                                            </a>
                                             <div class="d-flex flex-column flex-grow-1">
                                                 <a data-id="<?php echo $service->id; ?>" href="#" class="service text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1"><?php echo $service->title; ?></a>
                                                 <span class="text-muted font-weight-bold">

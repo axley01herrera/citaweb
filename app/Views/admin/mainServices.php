@@ -14,11 +14,11 @@
                 <h3 class="card-label">
                     <?php echo $service->title; ?>
                     <small>
-                        <?php 
-                            if(!empty($service->price))
-                                echo '€' . number_format($service->price, 2, ".", ','); 
-                            else
-                                echo 'Gratis';
+                        <?php
+                        if (!empty($service->price))
+                            echo '€' . number_format($service->price, 2, ".", ',');
+                        else
+                            echo 'Gratis';
                         ?>
                     </small>
                 </h3>
@@ -90,17 +90,20 @@
                 dataType: "json",
                 success: function(response) {
                     switch (response.error) {
-                            case 0:
-                                getServices();
-                                showAlert('success', 'Perfecto', 'Servicio eliminado');
-                                break;
-                            case 1:
-                                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
-                                break;
-                            case 2:
-                                window.location.href = "<?php echo base_url('Home/index?sessionExpired=true'); ?>";
-                                break;
-                        }
+                        case 0:
+                            getServices();
+                            showAlert('success', 'Perfecto', 'Servicio eliminado');
+                            break;
+                        case 1:
+                            showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
+                            break;
+                        case 2:
+                            window.location.href = "<?php echo base_url('Home/index?sessionExpired=true'); ?>";
+                            break;
+                        case 3:
+                            showAlert('error', 'Lo Sentimos', 'No se puede eliminar el servicio porque esta mezclado a tickets, si ya no ofrece este servicio desabilítelo y dejará de aparecer en el TPV y la pantalla de Bienvenida.');
+                            break;
+                    }
                 },
                 error: function(error) {
                     showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
