@@ -5,167 +5,179 @@ else
     $urlImage = 'background-image: url(data:image/png;base64,' . base64_encode($config->avatar) . ')';
 ?>
 <div class="tab-pane show active" id="profile" role="tabpanel">
-    <div class="row">
-        <div class="col-12 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <h5>Información del Negocio</h5>
-                    <!-- Avatar -->
-                    <div class="row">
-                        <div class="col-12 mt-5">
-                            <div class="image-input image-input-empty image-input-outline" id="kt_user_edit_avatar" style="<?php echo $urlImage; ?>">
-                                <div class="image-input-wrapper"></div>
-                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar Avatar">
-                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                    <input id="avatar" type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
-                                    <input type="hidden" name="profile_avatar_remove" />
-                                </label>
-                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                </span>
-                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- CompanyName -->
-                        <div class="col-12 col-lg-6 mt-5">
-                            <label for="txt-companyName">Nombre del Negocio</label>
-                            <input type="text" id="txt-companyName" class="form-control " value="<?php echo $config->companyName; ?>" />
-                        </div>
-                        <!-- Cif -->
-                        <div class="col-12 col-lg-2 mt-5">
-                            <label for="txt-cif">C.I.F</label>
-                            <input type="text" id="txt-cif" class="form-control" maxlength="9" value="<?php echo $config->cif; ?>" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Name -->
-                        <div class="col-12 col-lg-4 mt-5">
-                            <label for="txt-name">Tu Nombre</label>
-                            <input type="text" id="txt-name" class="form-control" placeholder="Nombre" value="<?php echo $config->name; ?>" />
-                        </div>
-                        <!-- Last Name -->
-                        <div class="col-12 col-lg-4 mt-5">
-                            <label for="txt-lastName">Apellidos</label>
-                            <input type="text" id="txt-lastName" class="form-control" value="<?php echo $config->lastName; ?>" />
-                        </div>
-                        <!-- Profession -->
-                        <div class="col-12 col-lg-4 mt-5">
-                            <label for="txt-profession">A qué te dedicas</label>
-                            <input type="text" id="txt-profession" class="form-control" value="<?php echo $config->profession; ?>" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Phone -->
-                        <div class="col-12 col-lg-3 mt-5">
-                            <label for="txt-phone">Teléfono 1</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="la la-phone"></i>
-                                    </span>
-                                </div>
-                                <input type="text" id="txt-phone" class="form-control" value="<?php echo $config->phone; ?>" />
-                            </div>
-                        </div>
-                        <!-- Phone -->
-                        <div class="col-12 col-lg-3 mt-5">
-                            <label for="txt-phone2">Teléfono 2</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="la la-phone"></i>
-                                    </span>
-                                </div>
-                                <input type="text" id="txt-phone2" class="form-control" value="<?php echo $config->phone2; ?>" />
-                            </div>
-                        </div>
-                        <!-- email -->
-                        <div class="col-12 col-lg-6 mt-5">
-                            <label for="txt-email">Correo Electrónico</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="la la-envelope"></i>
-                                    </span>
-                                </div>
-                                <input type="text" id="txt-email" class="form-control" value="<?php echo $config->email; ?>" />
-                            </div>
-                        </div>
+
+
+    <div class="card">
+        <div class="card-body">
+            <h5>Información del Negocio</h5>
+            <!-- Avatar -->
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <div class="image-input image-input-empty image-input-outline" id="kt_user_edit_avatar" style="<?php echo $urlImage; ?>">
+                        <div class="image-input-wrapper"></div>
+                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar Avatar">
+                            <i class="fa fa-pen icon-sm text-muted"></i>
+                            <input id="avatar" type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                            <input type="hidden" name="profile_avatar_remove" />
+                        </label>
+                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                        </span>
+                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                        </span>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12">
-            <div class="card mt-2 ">
-                <div class="card-body">
-                    <h5>Localización</h5>
-                    <div class="row">
-                        <!-- Address -->
-                        <div class="col-12 col-lg-6 mt-5">
-                            <label for="txt-bussinessAddress">Línea 1</label>
-                            <input type="text" id="txt-bussinessAddress" class="form-control" value="<?php echo $config->bussinessAddress; ?>" />
-                        </div>
-                        <!-- Address2 -->
-                        <div class="col-12 col-lg-6 mt-5">
-                            <label for="txt-bussinessAddress2">Línea 2</label>
-                            <input type="text" id="txt-bussinessAddress2" class="form-control" value="<?php echo $config->bussinessAddress2; ?>" />
-                        </div>
-                        <!-- City -->
-                        <div class="col-12 col-lg-4 mt-5">
-                            <label for="txt-bussinessCity">Ciudad</label>
-                            <input type="text" id="txt-bussinessCity" class="form-control" value="<?php echo $config->bussinessCity; ?>" />
-                        </div>
-                        <!-- State -->
-                        <div class="col-12 col-lg-4 mt-5">
-                            <label for="txt-bussinessState">Provincia</label>
-                            <input type="text" id="txt-bussinessState" class="form-control" value="<?php echo $config->bussinessState; ?>" />
-                        </div>
-                        <!-- Postal Code -->
-                        <div class="col-12 col-lg-2 mt-5">
-                            <label for="txt-bussinessPostalCode">Código Postal</label>
-                            <input type="text" id="txt-bussinessPostalCode" class="form-control" value="<?php echo $config->bussinessPostalCode; ?>" maxlength="5" />
-                        </div>
-                        <!-- Country -->
-                        <div class="col-12 col-lg-2 mt-5">
-                            <label for="txt-bussinessPostalCode">País</label>
-                            <input type="text" id="txt-bussinessCountry" class="form-control" value="<?php echo $config->bussinessCountry; ?>" />
-                        </div>
-                    </div>
+            <div class="row">
+                <!-- CompanyName -->
+                <div class="col-12 col-lg-6 mt-5">
+                    <label for="txt-companyName">Nombre del Negocio</label>
+                    <input type="text" id="txt-companyName" class="form-control " value="<?php echo $config->companyName; ?>" />
+                </div>
+                <!-- Cif -->
+                <div class="col-12 col-lg-2 mt-5">
+                    <label for="txt-cif">C.I.F</label>
+                    <input type="text" id="txt-cif" class="form-control" maxlength="9" value="<?php echo $config->cif; ?>" />
                 </div>
             </div>
-        </div>
-        <div class="col-12">
-            <div class="card mt-2">
-                <div class="card-body">
-                    <h5>Redes Sociales</h5>
-                    <div class="col-12 mt-5">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="socicon-facebook"></i>
-                                </span>
-                            </div>
-                            <input type="text" id="txt-facebook" class="form-control" value="<?php echo $config->facebookLink; ?>" />
+            <div class="row">
+                <!-- Name -->
+                <div class="col-12 col-lg-4 mt-5">
+                    <label for="txt-name">Tu Nombre</label>
+                    <input type="text" id="txt-name" class="form-control" placeholder="Nombre" value="<?php echo $config->name; ?>" />
+                </div>
+                <!-- Last Name -->
+                <div class="col-12 col-lg-4 mt-5">
+                    <label for="txt-lastName">Apellidos</label>
+                    <input type="text" id="txt-lastName" class="form-control" value="<?php echo $config->lastName; ?>" />
+                </div>
+                <!-- Profession -->
+                <div class="col-12 col-lg-4 mt-5">
+                    <label for="txt-profession">A qué te dedicas</label>
+                    <input type="text" id="txt-profession" class="form-control" value="<?php echo $config->profession; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <!-- Phone -->
+                <div class="col-12 col-lg-3 mt-5">
+                    <label for="txt-phone">Teléfono 1</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="la la-phone"></i>
+                            </span>
                         </div>
+                        <input type="text" id="txt-phone" class="form-control" value="<?php echo $config->phone; ?>" />
                     </div>
-                    <div class="col-12 mt-5">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="socicon-instagram"></i>
-                                </span>
-                            </div>
-                            <input type="text" id="txt-instagram" class="form-control" value="<?php echo $config->instagramLink; ?>" />
+                </div>
+                <!-- Phone -->
+                <div class="col-12 col-lg-3 mt-5">
+                    <label for="txt-phone2">Teléfono 2</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="la la-phone"></i>
+                            </span>
                         </div>
+                        <input type="text" id="txt-phone2" class="form-control" value="<?php echo $config->phone2; ?>" />
+                    </div>
+                </div>
+                <!-- email -->
+                <div class="col-12 col-lg-6 mt-5">
+                    <label for="txt-email">Correo Electrónico</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="la la-envelope"></i>
+                            </span>
+                        </div>
+                        <input type="text" id="txt-email" class="form-control" value="<?php echo $config->email; ?>" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="card mt-2 ">
+        <div class="card-body">
+            <h5>Localización</h5>
+            <div class="row">
+                <!-- Address -->
+                <div class="col-12 col-lg-6 mt-5">
+                    <label for="txt-bussinessAddress">Línea 1</label>
+                    <input type="text" id="txt-bussinessAddress" class="form-control" value="<?php echo $config->bussinessAddress; ?>" />
+                </div>
+                <!-- Address2 -->
+                <div class="col-12 col-lg-6 mt-5">
+                    <label for="txt-bussinessAddress2">Línea 2</label>
+                    <input type="text" id="txt-bussinessAddress2" class="form-control" value="<?php echo $config->bussinessAddress2; ?>" />
+                </div>
+                <!-- City -->
+                <div class="col-12 col-lg-4 mt-5">
+                    <label for="txt-bussinessCity">Ciudad</label>
+                    <input type="text" id="txt-bussinessCity" class="form-control" value="<?php echo $config->bussinessCity; ?>" />
+                </div>
+                <!-- State -->
+                <div class="col-12 col-lg-4 mt-5">
+                    <label for="txt-bussinessState">Provincia</label>
+                    <input type="text" id="txt-bussinessState" class="form-control" value="<?php echo $config->bussinessState; ?>" />
+                </div>
+                <!-- Postal Code -->
+                <div class="col-12 col-lg-2 mt-5">
+                    <label for="txt-bussinessPostalCode">Código Postal</label>
+                    <input type="text" id="txt-bussinessPostalCode" class="form-control" value="<?php echo $config->bussinessPostalCode; ?>" maxlength="5" />
+                </div>
+                <!-- Country -->
+                <div class="col-12 col-lg-2 mt-5">
+                    <label for="txt-bussinessPostalCode">País</label>
+                    <input type="text" id="txt-bussinessCountry" class="form-control" value="<?php echo $config->bussinessCountry; ?>" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-2">
+        <div class="card-body">
+            <h5>Redes Sociales</h5>
+            <!-- Facebook -->
+            <div class="col-12 mt-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="socicon-facebook"></i>
+                        </span>
+                    </div>
+                    <input type="text" id="txt-facebook" class="form-control" value="<?php echo $config->facebookLink; ?>" />
+                </div>
+            </div>
+            <!-- Instagram -->
+            <div class="col-12 mt-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="socicon-instagram"></i>
+                        </span>
+                    </div>
+                    <input type="text" id="txt-instagram" class="form-control" value="<?php echo $config->instagramLink; ?>" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12 col-lg-6 mt-5">
+                        <label for="txt-printer">Impresora</label>
+                        <input type="text" id="txt-printer" class="form-control" value="<?php echo $config->printer; ?>" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <div class="row mt-2">
     <div class="col-12 text-right">
@@ -219,7 +231,8 @@ else
                     'bussinessPostalCode': $('#txt-bussinessPostalCode').val(),
                     'bussinessCountry': $('#txt-bussinessCountry').val(),
                     'facebook': $('#txt-facebook').val(),
-                    'instagram': $('#txt-instagram').val()
+                    'instagram': $('#txt-instagram').val(),
+                    'printer': $('#txt-printer').val()
                 },
                 dataType: "json",
                 success: function(response) {

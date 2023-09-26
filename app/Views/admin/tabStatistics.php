@@ -134,4 +134,63 @@
             },
         ],
     });
+
+    dtHistory.on('click', '.btn-del', function() {
+        let basketID = $(this).attr('data-id');
+        Swal.fire({ // ALERT WARNING
+            title: 'Está seguro',
+            text: "Esta acción no es reversible",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#74788d',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Salir',
+            customClass: {
+                confirmButton: 'delete'
+            }
+        });
+        $('.delete').on('click', function() { // ACTION DELETE
+            $.ajax({
+                type: "post",
+                url: "<?php echo base_url('Admin/deleteBasket'); ?>",
+                data: {
+                    'basketID': basketID
+                },
+                dataType: "json",
+                success: function(response) {
+                    switch (response.error) {
+                        case 0:
+                            getTabContent('statistics');
+                            showAlert('success', 'Perfecto', 'Ticket eliminado');
+                            break;
+                        case 1:
+                            showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
+                            break;
+                    }
+                },
+                error: function(error) {
+                    showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
+                }
+            });
+        });
+
+
+    });
+
+    dtHistory.on('click', '.btn-print', function() {
+        let basketID = $(this).attr('data-id');
+        $.ajax({
+            type: "post",
+            url: "<?php echo base_url('Admin/reprintTicket'); ?>",
+            data: {
+                'basketID': basketID
+            },
+            dataType: "json",
+            success: function(response) {},
+            error: function(error) {
+                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
+            }
+        });
+    });
 </script>

@@ -6,6 +6,10 @@ use App\Models\MainModel;
 use App\Models\ReportModel;
 use App\Models\DataTablesModel;
 use CodeIgniter\HTTP\Response;
+use Escpos\PrintConnectors\WindowsPrintConnector;
+use Escpos\Printer;
+use Escpos\EscposImage;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 
 class Admin extends BaseController
 {
@@ -65,14 +69,15 @@ class Admin extends BaseController
         $data['phone'] = htmlspecialchars(trim($this->request->getPost('phone')));
         $data['phone2'] = htmlspecialchars(trim($this->request->getPost('phone2')));
         $data['email'] = htmlspecialchars(trim($this->request->getPost('email')));
-        $data['facebookLink'] = htmlspecialchars(trim($this->request->getPost('facebook')));
-        $data['instagramLink'] = htmlspecialchars(trim($this->request->getPost('instagram')));
         $data['bussinessAddress'] = htmlspecialchars(trim($this->request->getPost('bussinessAddress')));
         $data['bussinessAddress2'] = htmlspecialchars(trim($this->request->getPost('bussinessAddress2')));
         $data['bussinessCity'] = htmlspecialchars(trim($this->request->getPost('bussinessCity')));
         $data['bussinessState'] = htmlspecialchars(trim($this->request->getPost('bussinessState')));
         $data['bussinessPostalCode'] = htmlspecialchars(trim($this->request->getPost('bussinessPostalCode')));
         $data['bussinessCountry'] = htmlspecialchars(trim($this->request->getPost('bussinessCountry')));
+        $data['facebookLink'] = htmlspecialchars(trim($this->request->getPost('facebook')));
+        $data['instagramLink'] = htmlspecialchars(trim($this->request->getPost('instagram')));
+        $data['printer'] = htmlspecialchars(trim($this->request->getPost('printer')));
 
         $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 
@@ -443,8 +448,69 @@ class Admin extends BaseController
         $data['payType'] = (int) $payType;
 
         $result = $this->objMainModel->objUpdate('t_basket', $data, $basketID);
+        $this->printTicket($basketID, $data['dateTime'], $data['payType']);
 
         return json_encode($result);
+    }
+
+    public function printTicket($basketID, $date, $type)
+    {
+        $payType = '';
+
+        if ($type == 1)
+            $payType = 'Efectivo';
+        elseif ($type == 2)
+            $payType = 'Tarjeta';
+
+        $config = $this->objMainModel->objData('t_config', 'id', 1)[0]; 
+        $tiketInfo = $this->objMainModel->dtBasket($basketID); 
+        $count = sizeof($tiketInfo);
+
+        try {
+            $connector = new WindowsPrintConnector($config->printer);
+            $printer = new Printer($connector);
+
+            // Cabecera del ticket
+            $printer->setJustification(Printer::JUSTIFY_CENTER);
+            $printer->text($config->companyName . "\n");
+            $printer->text("C.I.F: " . $config->cif . "\n");
+            $printer->text($config->bussinessAddress . "\n");
+            $printer->text($config->bussinessAddress2 . "\n");
+            $printer->text($config->bussinessCity . ' ' . $config->bussinessState . ' ' . $config->bussinessPostalCode . ' ' . $config->bussinessCountry . "\n");
+            $printer->text("Fecha: " . $date . "\n");
+            $printer->setJustification(Printer::JUSTIFY_LEFT);
+            $printer->text("--------------------------------\n");
+
+            $total = 0;
+
+            for ($i = 0; $i < $count; $i++) {
+
+                $printer->text($tiketInfo[$i]->title . "\n");
+                $printer->setJustification(Printer::JUSTIFY_RIGHT);
+                $printer->text("Precio " . number_format($tiketInfo[$i]->amount, 2, ".", ',') . "\n");
+                $printer->setJustification(Printer::JUSTIFY_LEFT);
+                $total = $total + $tiketInfo[$i]->amount;
+            }
+
+            $printer->text("--------------------------------\n");
+
+            // Total
+            $printer->setJustification(Printer::JUSTIFY_RIGHT);
+            $printer->text("Tipo de Pago: " . $payType . "\n");
+            $printer->text("Total: " . number_format($total, 2, ".", ',') . "\n");
+            $printer->text("Impuestos Incluidos" . $payType . "\n");
+
+            // Despedida
+            $printer->text("Gracias por su Visita\n");
+
+            $printer->cut();
+            $printer->close();
+
+        } catch (\Exception $e) {
+            // echo "Error al imprimir: " . $e->getMessage();
+            return true;
+        }
+        return true;
     }
 
     public function collectionDay()
@@ -531,6 +597,25 @@ class Admin extends BaseController
         $data['data'] = $row;
 
         return json_encode($data);
+    }
+
+    public function reprintTicket()
+    {
+        $basketID = $this->request->getPost('basketID');
+        $result = $this->objMainModel->objData('t_basket', 'id', $basketID);
+        $this->printTicket($basketID, $result[0]->dateTime, $result[0]->payType);
+        $response['result'] = 'success';
+        return json_encode($response);
+    }
+
+    public function deleteBasket()
+    {
+        $basketID = $this->request->getPost('basketID');
+
+        $this->objMainModel->deleteShopBasketService($basketID);
+        $result = $this->objMainModel->objDelete('t_basket', $basketID);
+
+        return json_encode($result);
     }
 
     public function returnReportContent()
