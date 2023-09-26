@@ -30,7 +30,7 @@ class Database extends \CodeIgniter\Database\Config
 	 * @var array
 	 */
 
-	/* LOCAL
+	/* LOCAL 
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
