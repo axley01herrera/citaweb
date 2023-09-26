@@ -47,6 +47,7 @@
                             $('#modal').modal('hide');
                             getTabContent('tpv');
                             showAlert('success', 'Ticket', 'Cobrado satisfactoriamente');
+                            window.open('<?php echo base_url('Admin/printPDF');?>' + '?basketID=' + response.basketID, '_blank');
                             break;
                         case 1:
                             showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');

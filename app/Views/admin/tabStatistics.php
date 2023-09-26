@@ -180,17 +180,6 @@
 
     dtHistory.on('click', '.btn-print', function() {
         let basketID = $(this).attr('data-id');
-        $.ajax({
-            type: "post",
-            url: "<?php echo base_url('Admin/reprintTicket'); ?>",
-            data: {
-                'basketID': basketID
-            },
-            dataType: "json",
-            success: function(response) {},
-            error: function(error) {
-                showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
-            }
-        });
+        window.open('<?php echo base_url('Admin/printPDF');?>' + '?basketID=' + basketID, '_blank');
     });
 </script>

@@ -18,56 +18,9 @@
 <div class="container">
     <div class="card-toolbar no-print">
         <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
-            <!-- Tab Profile -->
-            <li class="nav-item mr-3">
-                <a id="tab-profile" class="tab nav-link active" href="#" data-tab="profile">
-                    <span class="nav-icon">
-                        <span class="svg-icon">
-                            <i class="flaticon2-user-1"></i>
-                        </span>
-                    </span>
-                    <span class="nav-text font-size-lg">Perfil</span>
-                </a>
-            </li>
-            <!-- Tab Schedule -->
-            <li class="nav-item mr-3">
-                <a id="tab-schedule" class="tab nav-link" href="#" data-tab="schedule">
-                    <span class="nav-icon">
-                        <i class="flaticon-calendar-with-a-clock-time-tools"></i>
-                    </span>
-                    <span class="nav-text font-size-lg">Horarios</span>
-                </a>
-            </li>
-            <!-- Tab Services -->
-            <li class="nav-item mr-3">
-                <a id="tab-service" class="tab nav-link" href="#" data-tab="services">
-                    <span class="nav-icon">
-                        <i class="flaticon-notepad"></i>
-                    </span>
-                    <span class="nav-text font-size-lg">Servicios</span>
-                </a>
-            </li>
-            <!-- Tab Appointments -->
-            <li class="nav-item mr-3">
-                <a id="tab-appointments" class="tab nav-link" href="#" data-tab="appointments">
-                    <span class="nav-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </span>
-                    <span class="nav-text font-size-lg">Calendario</span>
-                </a>
-            </li>
-            <!-- Tab Customers -->
-            <li class="nav-item mr-3">
-                <a id="tab-customers" class="tab nav-link" href="#" data-tab="customers">
-                    <span class="nav-icon">
-                        <i class="fas fa-users"></i>
-                    </span>
-                    <span class="nav-text font-size-lg">Clientes</span>
-                </a>
-            </li>
             <!-- Tab TPV -->
             <li class="nav-item mr-3">
-                <a id="tab-tpv" class="tab nav-link" href="#" data-tab="tpv">
+                <a id="tab-tpv" class="tab nav-link active" href="#" data-tab="tpv">
                     <span class="nav-icon">
                         <i class="fas fa-cash-register"></i>
                     </span>
@@ -83,6 +36,33 @@
                     <span class="nav-text font-size-lg">Estadísticas</span>
                 </a>
             </li>
+            <!-- Tab Appointments -->
+            <li class="nav-item mr-3">
+                <a id="tab-appointments" class="tab nav-link" href="#" data-tab="appointments">
+                    <span class="nav-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </span>
+                    <span class="nav-text font-size-lg">Calendario</span>
+                </a>
+            </li>
+            <!-- Tab Services -->
+            <li class="nav-item mr-3">
+                <a id="tab-service" class="tab nav-link" href="#" data-tab="services">
+                    <span class="nav-icon">
+                        <i class="flaticon-notepad"></i>
+                    </span>
+                    <span class="nav-text font-size-lg">Servicios</span>
+                </a>
+            </li>
+            <!-- Tab Customers -->
+            <li class="nav-item mr-3">
+                <a id="tab-customers" class="tab nav-link" href="#" data-tab="customers">
+                    <span class="nav-icon">
+                        <i class="fas fa-users"></i>
+                    </span>
+                    <span class="nav-text font-size-lg">Clientes</span>
+                </a>
+            </li>
             <!-- Tab Report -->
             <li class="nav-item mr-3">
                 <a id="tab-report" class="tab nav-link" href="#" data-tab="report">
@@ -90,6 +70,26 @@
                         <i class="fas fa-clipboard-list"></i>
                     </span>
                     <span class="nav-text font-size-lg">Reportes</span>
+                </a>
+            </li>
+            <!-- Tab Schedule -->
+            <li class="nav-item mr-3">
+                <a id="tab-schedule" class="tab nav-link" href="#" data-tab="schedule">
+                    <span class="nav-icon">
+                        <i class="flaticon-calendar-with-a-clock-time-tools"></i>
+                    </span>
+                    <span class="nav-text font-size-lg">Horarios</span>
+                </a>
+            </li>
+            <!-- Tab Profile -->
+            <li class="nav-item mr-3">
+                <a id="tab-profile" class="tab nav-link" href="#" data-tab="profile">
+                    <span class="nav-icon">
+                        <span class="svg-icon">
+                            <i class="flaticon2-user-1"></i>
+                        </span>
+                    </span>
+                    <span class="nav-text font-size-lg">Perfil</span>
                 </a>
             </li>
         </ul>
@@ -101,7 +101,7 @@
 </div>
 
 <script>
-    getTabContent('profile');
+    getTabContent('tpv');
     $('.tab').on('click', function(e) {
         e.preventDefault();
         $('#tab-content').html('');

@@ -3,9 +3,6 @@
     <div class="col-12 mt-5">
         <div id="dt-report"></div>
     </div>
-    <div class="col-12 text-right mt-5 no-print">
-        <button id="btn-printReport" class="btn btn-secondary"><i class="mdi mdi-printer"></i> Imprimir</button>
-    </div>
 </div>
 
 

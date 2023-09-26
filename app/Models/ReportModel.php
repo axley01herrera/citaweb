@@ -178,4 +178,15 @@ class ReportModel extends Model
 
         return $query->get()->getResult();
     }
+
+    public function endDay()
+    {
+        $query = $this->db->table('t_basket')
+            ->select('t_basket_service.amount AS amount, t_basket.payType AS payType')
+            ->join('t_basket_service', 't_basket_service.fk_basket = t_basket.id')
+            ->where('date', date("Y-m-d"))
+            ->where('status', 0);
+
+        return $query->get()->getResult();
+    }
 }

@@ -202,7 +202,7 @@ else
             contentType: false,
             processData: false,
             success: function(response) {
-                window.location.reload();
+                getTabContent('profile');
             },
             error: function(error) {
                 showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');

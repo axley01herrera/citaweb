@@ -1,3 +1,8 @@
+<div class="row mt-2">
+    <div class="col-12 text-right">
+        <button id="print-day-end" class="btn btn-danger">Imprimir Cierre del Día</button>
+    </div>
+</div>
 <div class="card mt-2">
     <div class="card-body">
         <div class="row">
@@ -77,5 +82,9 @@
                 showAlert('error', 'Lo Sentimos', 'Ha ocurrido un error');
             }
         });
+    });
+
+    $('#print-day-end').on('click', function () {
+        window.open('<?php echo base_url('Admin/printDayEnd');?>', '_blank');
     });
 </script>

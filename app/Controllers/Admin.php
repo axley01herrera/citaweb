@@ -235,14 +235,13 @@ class Admin extends BaseController
 
         $result = $this->objMainModel->objData('t_basket_service', 'fk_service', $this->request->getPost('id'));
 
-        if(empty($result)) {
+        if (empty($result)) {
             return json_encode($this->objMainModel->objDelete('t_service', $this->request->getPost('id')));
         } else {
             $result = array();
             $result['error'] = 3;
             return json_encode($result);
         }
-
     }
 
     public function calendar()
@@ -448,9 +447,96 @@ class Admin extends BaseController
         $data['payType'] = (int) $payType;
 
         $result = $this->objMainModel->objUpdate('t_basket', $data, $basketID);
-        $this->printTicket($basketID, $data['dateTime'], $data['payType']);
 
-        return json_encode($result);
+        if ($result['error'] == 0) {
+            $response['error'] = $result['error'];
+            $response['basketID'] = $basketID;
+            $response['dateTime'] = $data['dateTime'];
+            $response['payType'] = $data['payType'];
+            return json_encode($response);
+        } else
+            return json_encode($result);
+    }
+
+    public function printPDF()
+    {
+        $basketID = $this->request->getPostGet('basketID');
+        $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
+        $tiketInfo = $this->objMainModel->dtBasket($basketID);
+        $basket = $this->objMainModel->objData('t_basket', 'id', $basketID)[0];
+
+        $data = array();
+        $data['companyName'] = $config->companyName;
+        $data['cif'] = $config->cif;
+        $data['bussinessAddress'] = $config->bussinessAddress;
+        $data['bussinessAddress2'] = $config->bussinessAddress2;
+        $data['bussinessCity'] = $config->bussinessCity;
+        $data['bussinessState'] = $config->bussinessState;
+        $data['bussinessPostalCode'] = $config->bussinessPostalCode;
+        $data['bussinessCountry'] = $config->bussinessCountry;
+        $data['date'] = $basket->dateTime;
+        $data['tiketInfo'] = array();
+
+        $total = 0;
+        $count = sizeof($tiketInfo);
+
+        for ($i = 0; $i < $count; $i++) {
+            $item = array();
+            $item['title'] = $tiketInfo[$i]->title;
+            $item['Precio'] = number_format($tiketInfo[$i]->amount, 2, ".", ',');
+            $total = $total + $tiketInfo[$i]->amount;
+
+            $data['tiketInfo'][$i] = $item;
+        }
+
+        $data['total'] = number_format($total, 2, ".", ',');
+
+        if ($basket->payType == 1)
+            $data['payType'] = 'Efectivo';
+        else
+            $data['payType'] = 'Tarjeta';
+
+        return view('print/ticket', $data);
+    }
+
+    public function printDayEnd()
+    {
+        $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
+        $result = $this->objReportModel->endDay();
+
+        $data = array();
+        $data['companyName'] = $config->companyName;
+        $data['cif'] = $config->cif;
+        $data['dateTime'] = date("Y-m-d H:i:s");
+        $data['bussinessAddress'] = $config->bussinessAddress;
+        $data['bussinessAddress2'] = $config->bussinessAddress2;
+        $data['bussinessCity'] = $config->bussinessCity;
+        $data['bussinessState'] = $config->bussinessState;
+        $data['bussinessPostalCode'] = $config->bussinessPostalCode;
+        $data['bussinessCountry'] = $config->bussinessCountry;
+        $data['tickets'] = array();
+        $data['totalTickets'] = sizeof($result);
+
+        $index = 1;
+        $total = 0;
+
+        foreach ($result as $r) {
+            $item = array();
+            $item['index'] = $index;
+            if ($r->payType == 1)
+                $item['payType'] = "Efectivo";
+            else
+                $item['payType'] = "Tarjeta";
+
+            $item['amount'] = number_format($r->amount, 2, ".", ',');
+
+            $data['tickets'][] = $item;
+            $total = $total + $r->amount;
+            $index ++;
+        }
+
+        $data['total'] = number_format($total, 2, ".", ',');;
+        return view('print/endDay', $data);
     }
 
     public function printTicket($basketID, $date, $type)
@@ -462,8 +548,8 @@ class Admin extends BaseController
         elseif ($type == 2)
             $payType = 'Tarjeta';
 
-        $config = $this->objMainModel->objData('t_config', 'id', 1)[0]; 
-        $tiketInfo = $this->objMainModel->dtBasket($basketID); 
+        $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
+        $tiketInfo = $this->objMainModel->dtBasket($basketID);
         $count = sizeof($tiketInfo);
 
         try {
@@ -505,7 +591,6 @@ class Admin extends BaseController
 
             $printer->cut();
             $printer->close();
-
         } catch (\Exception $e) {
             echo "Error al imprimir: " . $e->getMessage();
             return true;
@@ -599,15 +684,6 @@ class Admin extends BaseController
         return json_encode($data);
     }
 
-    public function reprintTicket()
-    {
-        $basketID = $this->request->getPost('basketID');
-        $result = $this->objMainModel->objData('t_basket', 'id', $basketID);
-        $this->printTicket($basketID, $result[0]->dateTime, $result[0]->payType);
-        $response['result'] = 'success';
-        return json_encode($response);
-    }
-
     public function deleteBasket()
     {
         $basketID = $this->request->getPost('basketID');
@@ -638,7 +714,6 @@ class Admin extends BaseController
         $data['collectionDay'] = $result;
 
         return view('report/collection', $data);
-
     }
 
     public function dtReport()
@@ -648,9 +723,9 @@ class Admin extends BaseController
         $results = $this->objReportModel->dtReport($dateStart, $dateEnd);
         $rows = array();
 
-        foreach($results as $result) {
+        foreach ($results as $result) {
             $col = array();
-            $col['date'] =  '<h5>'.date('d/m/Y', strtotime($result->date)).'</h5>';
+            $col['date'] =  '<h5>' . date('d/m/Y', strtotime($result->date)) . '</h5>';
             $col['cash'] = '€ ' . number_format($result->cashAmount, 2, ".", ',');
             $col['card'] = '€ ' . number_format($result->cardAmount, 2, ".", ',');
             $col['total'] = '€ ' . number_format($result->totalAmount, 2, ".", ',');
