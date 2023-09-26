@@ -7,7 +7,7 @@ else
 <div class="tab-pane show active" id="profile" role="tabpanel">
 
 
-    <div class="card">
+    <div class="card mt-1">
         <div class="card-body">
             <h5>Información del Negocio</h5>
             <!-- Avatar -->
