@@ -507,7 +507,7 @@ class Admin extends BaseController
             $printer->close();
 
         } catch (\Exception $e) {
-            // echo "Error al imprimir: " . $e->getMessage();
+            echo "Error al imprimir: " . $e->getMessage();
             return true;
         }
         return true;
