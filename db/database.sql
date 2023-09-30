@@ -9,15 +9,36 @@ CREATE TABLE IF NOT EXISTS `t_appointment` (
   PRIMARY KEY (`id`)
 )
 
+DROP TABLE IF EXISTS `t_basket`;
+CREATE TABLE IF NOT EXISTS `t_basket` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` int(1) NOT NULL COMMENT '0 Closed\r\n1 Open',
+  `dateTime` datetime DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `payType` int(1) DEFAULT NULL COMMENT '1 = Cash\r\n2 = Card',
+  PRIMARY KEY (`id`)
+) 
+
+DROP TABLE IF EXISTS `t_basket_service`;
+CREATE TABLE IF NOT EXISTS `t_basket_service` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_basket` int(11) NOT NULL,
+  `fk_service` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  PRIMARY KEY (`id`)
+)
+
 DROP TABLE IF EXISTS `t_config`;
 CREATE TABLE IF NOT EXISTS `t_config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cif` varchar(9) COLLATE utf8_spanish_ci DEFAULT NULL,
   `avatar` longblob,
   `name` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `lastName` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `companyName` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `profession` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `phone` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `phone2` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `email` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `user` varchar(45) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'admin',
   `password` varchar(999) COLLATE utf8_spanish_ci NOT NULL DEFAULT '$2y$10$Tqxa8gwJUvg57v3clMTiLeoI3RqnA9vSV166AaT3/Ny5GlQqjl7I2',
@@ -66,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `t_config` (
   `bussinessPostalCode` int(5) DEFAULT NULL,
   `bussinessCountry` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `emailNotification` int(1) NOT NULL DEFAULT '1',
+  `printer` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
 
@@ -83,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `t_customer` (
   `emailVerified` int(11) NOT NULL DEFAULT '0',
   `emailSubscription` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-)
+) 
 
 DROP TABLE IF EXISTS `t_service`;
 CREATE TABLE IF NOT EXISTS `t_service` (
