@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-3 mt-5">
                     <label for="txt-price">Precio</label>
-                    <input type="text" id="txt-price" class="form-control" value="<?php if (!empty($service->price)) echo  number_format($service->price, 2, ".", ','); ?>" />
+                    <input type="text" id="txt-price" class="required-service form-control" value="<?php if (!empty($service->price)) echo  number_format($service->price, 2, ".", ','); ?>" />
                 </div>
                 <div class="col-12 mt-5">
                     <label for="txt-description">Descripción</label>
