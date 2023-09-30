@@ -307,30 +307,6 @@ else
                     </div>
                 </div>
             </div>
-
-            <div class="row mt-5">
-                <div class="col-12">
-                    <div class="card card-custom mb-8 mb-lg-5">
-                        <div class="card-body">
-                            <p>
-                                Si busca mejorar la gestión de citas y la visibilidad en línea para su negocio, le invitamos a conocer esta innovadora herramienta y descubrir cómo puede transformar su operación en un entorno digital.
-                            </p>
-                            <p>
-                                La gestión eficiente de las citas es esencial para el éxito de tu negocio. Una herramienta personalizada y totalmente adaptada a tus necesidades puede marcar la diferencia en tu eficacia.
-                                Me complace presentarle una solución que ofrece automatización completa de las reservas por parte de tus clientes y una presencia en línea. Esta aplicación le brinda la capacidad de llevar a cabo reservas de manera eficiente, garantizando un control seguro y digital de las citas de tus clientes.
-                            </p>
-                            <p>
-                                Ejemplo de negocio que ya está experimentando el potencial de esta aplicación, <a target="_blank" href="https://alcaponebarbershop.com/">Alcapone Barber Shop</a>, ha logrado gestionar sus reservas de manera automática y eficaz, mejorando su servicio y satisfaciendo las necesidades de sus clientes.
-                            </p>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <a target="_blank" href="https://axleyherrera.com/Main/contact?lang=es" class="btn btn-success btn-shadow-hover font-weight-bolder py-3">Quiero esta Aplicación</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

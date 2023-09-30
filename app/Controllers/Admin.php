@@ -5,11 +5,6 @@ namespace App\Controllers;
 use App\Models\MainModel;
 use App\Models\ReportModel;
 use App\Models\DataTablesModel;
-use CodeIgniter\HTTP\Response;
-use Escpos\PrintConnectors\WindowsPrintConnector;
-use Escpos\Printer;
-use Escpos\EscposImage;
-use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 
 class Admin extends BaseController
 {
@@ -338,6 +333,7 @@ class Admin extends BaseController
                     $data['basketID'] = $result['id'];
                 } else
                     $data['basketID'] = $basket[0]->id;
+                $data['config'] = $this->objMainModel->objData('t_config', 'id', 1)[0];
                 return view('admin/tabTpv', $data);
                 break;
             case 'statistics':
@@ -531,70 +527,11 @@ class Admin extends BaseController
 
             $data['tickets'][] = $item;
             $total = $total + $r->amount;
-            $index ++;
+            $index++;
         }
 
         $data['total'] = number_format($total, 2, ".", ',');;
         return view('print/endDay', $data);
-    }
-
-    public function printTicket($basketID, $date, $type)
-    {
-        $payType = '';
-
-        if ($type == 1)
-            $payType = 'Efectivo';
-        elseif ($type == 2)
-            $payType = 'Tarjeta';
-
-        $config = $this->objMainModel->objData('t_config', 'id', 1)[0];
-        $tiketInfo = $this->objMainModel->dtBasket($basketID);
-        $count = sizeof($tiketInfo);
-
-        try {
-            $connector = new WindowsPrintConnector($config->printer);
-            $printer = new Printer($connector);
-
-            // Cabecera del ticket
-            $printer->setJustification(Printer::JUSTIFY_CENTER);
-            $printer->text($config->companyName . "\n");
-            $printer->text("C.I.F: " . $config->cif . "\n");
-            $printer->text($config->bussinessAddress . "\n");
-            $printer->text($config->bussinessAddress2 . "\n");
-            $printer->text($config->bussinessCity . ' ' . $config->bussinessState . ' ' . $config->bussinessPostalCode . ' ' . $config->bussinessCountry . "\n");
-            $printer->text("Fecha: " . $date . "\n");
-            $printer->setJustification(Printer::JUSTIFY_LEFT);
-            $printer->text("--------------------------------\n");
-
-            $total = 0;
-
-            for ($i = 0; $i < $count; $i++) {
-
-                $printer->text($tiketInfo[$i]->title . "\n");
-                $printer->setJustification(Printer::JUSTIFY_RIGHT);
-                $printer->text("Precio " . number_format($tiketInfo[$i]->amount, 2, ".", ',') . "\n");
-                $printer->setJustification(Printer::JUSTIFY_LEFT);
-                $total = $total + $tiketInfo[$i]->amount;
-            }
-
-            $printer->text("--------------------------------\n");
-
-            // Total
-            $printer->setJustification(Printer::JUSTIFY_RIGHT);
-            $printer->text("Tipo de Pago: " . $payType . "\n");
-            $printer->text("Total: " . number_format($total, 2, ".", ',') . "\n");
-            $printer->text("Impuestos Incluidos" . $payType . "\n");
-
-            // Despedida
-            $printer->text("Gracias por su Visita\n");
-
-            $printer->cut();
-            $printer->close();
-        } catch (\Exception $e) {
-            echo "Error al imprimir: " . $e->getMessage();
-            return true;
-        }
-        return true;
     }
 
     public function collectionDay()

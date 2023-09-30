@@ -61,7 +61,7 @@ else
             <div class="row">
                 <!-- Phone -->
                 <div class="col-12 col-lg-3 mt-5">
-                    <label for="txt-phone">Teléfono 1</label>
+                    <label for="txt-phone">Teléfono (Móvil)</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -73,7 +73,7 @@ else
                 </div>
                 <!-- Phone -->
                 <div class="col-12 col-lg-3 mt-5">
-                    <label for="txt-phone2">Teléfono 2</label>
+                    <label for="txt-phone2">Teléfono (Fijo)</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">

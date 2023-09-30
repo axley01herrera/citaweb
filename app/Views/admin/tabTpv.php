@@ -9,13 +9,16 @@
             <div class="col-12 col-md-8 col-lg-8 ">
                 <h5>Servicios</h5>
                 <div class="row">
-                    <?php foreach ($services as $service) : ?>
+                    <?php 
+                        foreach ($services as $service) : 
+
+                    ?>
                         <div class="col-12 col-lg-4 mt-5">
                             <div class="card card-custom card-shadowless">
                                 <div class="card-body">
                                     <div class="overlay">
                                         <div class="overlay-wrapper rounded bg-light text-center">
-                                            <img src="<?php echo base_url('assets/media/products/1.png'); ?>" alt="img" class="mw-50 w-50px">
+                                            <img src="<?php echo 'data:image/png;base64,' . base64_encode($config->avatar); ?>" alt="img" class="w-50 w-50px">
                                         </div>
                                     </div>
                                     <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column" >
