@@ -1,30 +1,52 @@
 <?php
 if (empty($config->avatar))
-    $urlImage = 'background-image: url("' . base_url('assets/media/users/blank.png') . '")';
+    $urlImage = 'background-image: url(' . base_url('assets/media/logos/default.png') . ')';
 else
     $urlImage = 'background-image: url(data:image/png;base64,' . base64_encode($config->avatar) . ')';
 ?>
 <div class="container mt-5 mb-5">
     <div class="row">
+        <!-- Bussines Info -->
         <div class="col-12 col-lg-3 mt-5">
             <div class="card card-custom">
                 <div class="card-body pt-5">
                     <div class="text-center mb-5">
+                        <!-- Logo -->
                         <div class="symbol symbol-60 symbol-circle symbol-xl-90">
                             <div class="symbol-label" style="<?php echo $urlImage; ?>"></div>
                             <i class="symbol-badge symbol-badge-bottom bg-success"></i>
                         </div>
-                        <h4 class="font-weight-bold my-2" title="<?php echo $config->profession; ?>"><?php echo $config->name . ' ' . $config->lastName; ?></h4>
-                        <div class="text-muted mb-2"><a href="<?php echo base_url('Home/loginAdmin'); ?>"><?php echo $config->companyName; ?></a></div>
+                        <!-- Manager -->
+                        <h4 class="font-weight-bold my-2" title="<?php echo $config->profession; ?>">
+                            <?php echo $config->name . ' ' . $config->lastName; ?>
+                        </h4>
+                        <!-- Bussines Name -->
+                        <div class="text-muted mb-2">
+                            <a href="<?php echo base_url('Home/loginAdmin'); ?>">
+                                <?php
+                                if (!empty($config->companyName))
+                                    echo $config->companyName;
+                                else
+                                    echo 'Nombre del Negocio';
+                                ?>
+                            </a>
+                        </div>
                     </div>
                     <div class="mt-2">
-                        <span class="font-weight-bold mr-2">Correo Electrónico</span>
-                        <br>
-                        <a href="mailto:<?php echo $config->email; ?>" class="text-muted text-hover-primary"><?php echo $config->email; ?></a>
-                        <br><br>
-                        <span class="font-weight-bold mr-2">Teléfono Móvil</span>
-                        <br>
-                        <a href="tel:<?php echo str_replace(' ', '', $config->phone); ?>" class="text-muted text-hover-primary"><?php echo $config->phone; ?></a>
+                        <!-- Email -->
+                        <?php if (!empty($config->email)) : ?>
+                            <span class="font-weight-bold mr-2">Correo Electrónico</span>
+                            <br>
+                            <a href="mailto:<?php echo $config->email; ?>" class="text-muted text-hover-primary"><?php echo $config->email; ?></a>
+                            <br><br>
+                        <?php endif ?>
+                        <!-- Phone -->
+                        <?php if (!empty($config->phone)) : ?>
+                            <span class="font-weight-bold mr-2">Teléfono Móvil</span>
+                            <br>
+                            <a href="tel:<?php echo str_replace(' ', '', $config->phone); ?>" class="text-muted text-hover-primary"><?php echo $config->phone; ?></a>
+                        <?php endif ?>
+                        <!-- Phone 2 -->
                         <?php if (!empty($config->phone2)) : ?>
                             <br><br>
                             <span class="font-weight-bold mr-2">Teléfono Fijo</span>
@@ -32,21 +54,24 @@ else
                             <a href="tel:<?php echo str_replace(' ', '', $config->phone2); ?>" class="text-muted text-hover-primary"><?php echo $config->phone2; ?></a>
                         <?php endif ?>
                     </div>
+                    <!-- Welcome msg -->
                     <div class="pb-6 mt-2">Bienvenido a mi perfil profesional en línea, te invito a registrarte para que reserves tus citas aquí</div>
                     <a id="btn-registration" href="<?php echo base_url('Home/signup'); ?>" class="btn btn-light-success font-weight-bold py-3 px-6 mb-2 text-center btn-block">Regístrate</a>
                     <div class="text-center mt-5">
                         <h3 class="card-title font-weight-bolder">Ya eres cliente</h3>
                         <p class="text-center font-weight-normal font-size-lg">Inicia sesión para gestionar tus citas</p>
                     </div>
+                    <!-- btn login -->
                     <div class="row">
                         <div class="col-12 text-center">
                             <a href="<?php echo base_url('Home/login'); ?>" class="btn btn-success btn-shadow-hover font-weight-bolder py-3">Iniciar Sesión</a>
                         </div>
                     </div>
+                    <!-- Recover Password -->
                     <div class="text-center mt-5">
                         <a href="<?php echo base_url('Home/forgotPassword'); ?>" class="text-dark-50 text-hover-primary my-3 mr-2">Recuperar Contraseña</a>
                     </div>
-                    <!-- Contact -->
+                    <!-- Social Networks Links -->
                     <div class="mt-10 text-center">
                         <?php if (!empty($config->facebookLink)) : ?>
                             <a href="<?php echo $config->facebookLink; ?>" target="_blank" class="btn btn-icon btn-circle btn-light-facebook mr-2">
@@ -64,18 +89,33 @@ else
                             </a>
                         <?php endif ?>
                     </div>
-                    <!-- Address -->
+                    <!-- Bussines Address -->
                     <div class="mt-5">
                         <span class="text-muted">
-                            <?php echo $config->bussinessAddress; ?>
+                            <?php
+                            if (!empty($config->bussinessAddress))
+                                echo $config->bussinessAddress;
+                            ?>
                             <?php
                             if (!empty($config->bussinessAddress2)) : ?>
                                 , <?php echo $config->bussinessAddress2; ?>
                             <?php endif ?>
                         </span>
                         <br>
-                        <span class="text-muted"><?php echo $config->bussinessCity . ', ' . $config->bussinessState . ', ' . $config->bussinessPostalCode . ', ' . $config->bussinessCountry; ?></span>
+                        <span class="text-muted">
+                            <?php
+                            if (!empty($config->bussinessCity))
+                                echo $config->bussinessCity . ', ';
+                            if (!empty($config->bussinessState))
+                                echo $config->bussinessState . ', ';
+                            if (!empty($config->bussinessPostalCode))
+                                echo $config->bussinessPostalCode . ', ';
+                            if (!empty($config->bussinessCountry))
+                                echo $config->bussinessCountry;
+                            ?>
+                        </span>
                     </div>
+                    <!-- Copy Right-->
                     <div class="row">
                         <div class="col-12 text-center mt-5">
                             <a target="_blank" href="https://axleyherrera.com/">2023© Axley Herrera Vázquez</a>
@@ -84,6 +124,7 @@ else
                 </div>
             </div>
         </div>
+
         <div class="col-12 col-lg-9 ">
             <div class="row mt-5">
                 <div class="col-12">

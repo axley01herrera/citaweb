@@ -77,7 +77,6 @@ class Admin extends BaseController
         $data['bussinessCountry'] = htmlspecialchars(trim($this->request->getPost('bussinessCountry')));
         $data['facebookLink'] = htmlspecialchars(trim($this->request->getPost('facebook')));
         $data['instagramLink'] = htmlspecialchars(trim($this->request->getPost('instagram')));
-        $data['printer'] = htmlspecialchars(trim($this->request->getPost('printer')));
 
         $result = $this->objMainModel->objUpdate('t_config', $data, 1);
 

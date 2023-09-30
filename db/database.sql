@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `t_appointment` (
   `service` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `description` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 DROP TABLE IF EXISTS `t_basket`;
 CREATE TABLE IF NOT EXISTS `t_basket` (
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `t_basket` (
   `date` date DEFAULT NULL,
   `payType` int(1) DEFAULT NULL COMMENT '1 = Cash\r\n2 = Card',
   PRIMARY KEY (`id`)
-) 
+); 
 
 DROP TABLE IF EXISTS `t_basket_service`;
 CREATE TABLE IF NOT EXISTS `t_basket_service` (
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `t_basket_service` (
   `fk_service` int(11) NOT NULL,
   `amount` float NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 DROP TABLE IF EXISTS `t_config`;
 CREATE TABLE IF NOT EXISTS `t_config` (
@@ -87,9 +87,8 @@ CREATE TABLE IF NOT EXISTS `t_config` (
   `bussinessPostalCode` int(5) DEFAULT NULL,
   `bussinessCountry` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `emailNotification` int(1) NOT NULL DEFAULT '1',
-  `printer` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 DROP TABLE IF EXISTS `t_customer`;
 CREATE TABLE IF NOT EXISTS `t_customer` (
@@ -105,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `t_customer` (
   `emailVerified` int(11) NOT NULL DEFAULT '0',
   `emailSubscription` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) 
+); 
 
 DROP TABLE IF EXISTS `t_service`;
 CREATE TABLE IF NOT EXISTS `t_service` (
@@ -114,4 +113,4 @@ CREATE TABLE IF NOT EXISTS `t_service` (
   `price` float DEFAULT NULL,
   `description` varchar(999) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);

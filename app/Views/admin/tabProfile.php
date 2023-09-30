@@ -126,7 +126,7 @@ else
                 <!-- Postal Code -->
                 <div class="col-12 col-lg-2 mt-5">
                     <label for="txt-bussinessPostalCode">Código Postal</label>
-                    <input type="text" id="txt-bussinessPostalCode" class="form-control" value="<?php echo $config->bussinessPostalCode; ?>" maxlength="5" />
+                    <input type="text" id="txt-bussinessPostalCode" class="form-control number" value="<?php echo $config->bussinessPostalCode; ?>" maxlength="5" />
                 </div>
                 <!-- Country -->
                 <div class="col-12 col-lg-2 mt-5">
@@ -164,20 +164,6 @@ else
             </div>
         </div>
     </div>
-
-    <div class="card mt-2">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12">
-                    <div class="col-12 col-lg-6 mt-5">
-                        <label for="txt-printer">Impresora</label>
-                        <input type="text" id="txt-printer" class="form-control" value="<?php echo $config->printer; ?>" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 <div class="row mt-2">
     <div class="col-12 text-right">
@@ -231,8 +217,7 @@ else
                     'bussinessPostalCode': $('#txt-bussinessPostalCode').val(),
                     'bussinessCountry': $('#txt-bussinessCountry').val(),
                     'facebook': $('#txt-facebook').val(),
-                    'instagram': $('#txt-instagram').val(),
-                    'printer': $('#txt-printer').val()
+                    'instagram': $('#txt-instagram').val()
                 },
                 dataType: "json",
                 success: function(response) {
@@ -270,5 +255,9 @@ else
                 }
             });
         });
+    });
+
+    $('.number').on('input change', function() {
+        jQuery(this).val(jQuery(this).val().replace(/[^0-9+]/g, ''));
     });
 </script>
